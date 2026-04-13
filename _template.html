@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- ==========================================================================
+     PROJECT PAGE TEMPLATE
+     ==========================================================================
+     HOW TO USE:
+     1. Duplicate this file inside the /projects folder.
+     2. Rename it to something like "my-new-project.html" (lowercase, dashes).
+     3. Update the <title> tag below.
+     4. Replace every [bracketed placeholder] with real content.
+     5. Add a matching project card to index.html pointing to this file.
+     ========================================================================== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>[Project Title] — Riz Gosla</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- NOTE: ../styles.css because this file is one folder deep -->
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<!-- Keep this nav block identical to index.html, but use ../ for links -->
+<nav>
+  <div class="inner">
+    <a href="../index.html" class="brand">Riz Gosla</a>
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../changelog.html">Changelog</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <article class="project-detail">
+    <a href="../index.html#projects" class="back-link">← Back to projects</a>
+
+    <div class="meta">
+      <span class="mono">[Year]</span>
+      <span class="mono">[Category — e.g. Mechanical Design]</span>
+    </div>
+
+    <h1>[Project Title]</h1>
+
+    <p class="summary">[One- or two-sentence summary that appears right under the title. Keep it short and compelling.]</p>
+
+    <div class="tags">
+      <span class="tag">Tool / Skill</span>
+      <span class="tag">Tool / Skill</span>
+      <span class="tag">Tool / Skill</span>
+    </div>
+  </article>
+
+  <div class="project-body">
+    <span class="mono">Writeup</span>
+    <div>
+      <h2>Overview</h2>
+      <p>[What is this project? Why did you build it? Set context in 2–3 sentences.]</p>
+
+      <h2>Approach</h2>
+      <p>[How did you build it? What were the key decisions? Walk through the interesting parts.]</p>
+      <ul>
+        <li>[Key decision or step one]</li>
+        <li>[Key decision or step two]</li>
+        <li>[Key decision or step three]</li>
+      </ul>
+
+      <h2>Results</h2>
+      <p>[What did you end up with? What worked, what didn't, what would you do differently?]</p>
+
+      <h2>What I learned</h2>
+      <p>[The honest takeaway. What does this project teach about your engineering thinking?]</p>
+
+      <!-- To add an image: put the file in /projects/images/ and reference it like this:
+           <img src="images/my-diagram.png" alt="Description of image"> -->
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <footer>
+    <span>© 2026 Riz Gosla</span>
+    <span>rizgosla.com</span>
+  </footer>
+</div>
+
+</body>
+</html>
