@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cyclodial Drive — Riz Gosla</title>
+<title>Cycloidal Drive — Riz Gosla</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
       <li><a href="../index.html#about">About</a></li>
       <li><a href="../index.html#projects">Projects</a></li>
       <li><a href="../index.html#experience">Experience</a></li>
-      <li><a href="../changelog.html">Changelog</a></li>
+      <li><a href="../blog.html">Blog</a></li>
       <li><a href="../index.html#contact">Contact</a></li>
     </ul>
   </div>
@@ -29,17 +29,19 @@
     <a href="../index.html#projects" class="back-link">← Back to projects</a>
 
     <div class="meta">
-      <span class="mono">2025</span>
+      <span class="mono">2025–2026</span>
       <span class="mono">Mechanical Design</span>
+      <span class="version-badge mono">v2.1 — Current</span>
     </div>
 
-    <h1>Cyclodial Drive</h1> <!--Title/Header-->
+    <h1>Cycloidal Drive</h1>
 
-    <p class="summary">This is an example of what a filled-in project page looks like. Use it as a reference when you're writing your own — then delete this file once you have real projects to show.</p>
+    <p class="summary">A parametric cycloidal drive generator built in FeatureScript — fully defined by three inputs: output size, gear ratio, and eccentricity. 3D-printed lobes, metal output pins, and ball bearings throughout.</p>
 
     <div class="tags">
       <span class="tag">Onshape</span>
       <span class="tag">FeatureScript</span>
+      <span class="tag">Robotics</span>
       <span class="tag">Mechatronics</span>
     </div>
   </article>
@@ -65,7 +67,108 @@
       <p>The one thing you'd tell another engineer if they were about to build the same thing. This is often the most-read paragraph of a project writeup.</p>
     </div>
   </div>
-</div>
+
+  <!-- ======================================================================
+       REVISION LOG — cycloidal drive iteration history
+       ====================================================================== -->
+  <div class="revision-log">
+    <div class="revision-log-head">
+      <span class="mono">Revision Log</span>
+      <h2>How it <span class="serif">evolved</span>.</h2>
+      <p style="font-size:1rem; color: var(--ink-soft); font-weight:300; margin-top:0.75rem; max-width: 52ch;">A version-by-version record of what changed and why. Updated as the design develops.</p>
+    </div>
+
+    <div class="revision-timeline">
+
+      <div class="revision-entry" data-status="current">
+        <div class="revision-marker">
+          <div class="revision-dot"></div>
+          <div class="revision-line"></div>
+        </div>
+        <div class="revision-content">
+          <div class="revision-header">
+            <span class="revision-version mono">v2.1</span>
+            <span class="revision-status mono" data-status="current">Current</span>
+            <span class="mono revision-date">2026 · 04 · 13</span>
+          </div>
+          <h3 class="revision-title">Output pin clearance and tolerance tuning</h3>
+          <p class="revision-desc">After printing v2.0 and measuring real-world backlash, I tightened the output pin hole diameter and adjusted the lobe clearance offset in the FeatureScript. No geometry changes — just manufacturing reality corrections.</p>
+          <ul class="revision-changes">
+            <li>Output pin holes reduced by 0.15mm for tighter press fit</li>
+            <li>Lobe-to-housing clearance updated from 0.2mm to 0.15mm</li>
+            <li>Backlash reduced from ~2.5° to ~0.8° in physical test</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="revision-entry" data-status="deprecated">
+        <div class="revision-marker">
+          <div class="revision-dot"></div>
+          <div class="revision-line"></div>
+        </div>
+        <div class="revision-content">
+          <div class="revision-header">
+            <span class="revision-version mono">v2.0</span>
+            <span class="revision-status mono" data-status="deprecated">Superseded</span>
+            <span class="mono revision-date">2026 · 03 · 01</span>
+          </div>
+          <h3 class="revision-title">Full FeatureScript rewrite — user-defined eccentricity</h3>
+          <p class="revision-desc">Rewrote the generator from scratch to expose eccentricity as a first-class input rather than deriving it from ratio. This unlocked designs that were previously impossible to express.</p>
+          <ul class="revision-changes">
+            <li>Eccentricity now a direct user parameter (was computed from ratio)</li>
+            <li>Gear ratio and output diameter remain independent inputs</li>
+            <li>Pin circle diameter auto-calculated from eccentricity and lobe count</li>
+            <li>First version to successfully print without geometric interference</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="revision-entry" data-status="deprecated">
+        <div class="revision-marker">
+          <div class="revision-dot"></div>
+          <div class="revision-line"></div>
+        </div>
+        <div class="revision-content">
+          <div class="revision-header">
+            <span class="revision-version mono">v1.1</span>
+            <span class="revision-status mono" data-status="deprecated">Superseded</span>
+            <span class="mono revision-date">2026 · 01 · 18</span>
+          </div>
+          <h3 class="revision-title">Housing geometry and bearing seat added</h3>
+          <p class="revision-desc">Added the outer housing and bearing seat to the FeatureScript so the whole assembly could be generated from one feature. Discovered the lobe profile equation had a sign error that caused interference at low eccentricity.</p>
+          <ul class="revision-changes">
+            <li>Outer housing with bearing seat now generated automatically</li>
+            <li>Fixed sign error in lobe offset equation</li>
+            <li>Clearance gaps added between lobe tips and housing pins</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="revision-entry first" data-status="deprecated">
+        <div class="revision-marker">
+          <div class="revision-dot"></div>
+        </div>
+        <div class="revision-content">
+          <div class="revision-header">
+            <span class="revision-version mono">v1.0</span>
+            <span class="revision-status mono" data-status="deprecated">Initial</span>
+            <span class="mono revision-date">2025 · 12 · 04</span>
+          </div>
+          <h3 class="revision-title">First working lobe profile generator</h3>
+          <p class="revision-desc">First FeatureScript that could generate a cycloidal lobe profile given a user-specified gear ratio and output size. No housing, no bearing seats — just the lobe geometry as a proof of concept.</p>
+          <ul class="revision-changes">
+            <li>Lobe profile generated from parametric curve equations</li>
+            <li>Ratio and diameter as inputs; eccentricity derived</li>
+            <li>Manual housing design (not yet part of the script)</li>
+            <li>Printed in PLA — print succeeded but tolerance too loose for real use</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /.container -->
 
 <div class="container">
   <footer>

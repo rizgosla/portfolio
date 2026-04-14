@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <!-- ==========================================================================
-     PROJECT PAGE TEMPLATE
+     PROJECT PAGE TEMPLATE — with Revision Log
      ==========================================================================
      HOW TO USE:
-     1. Duplicate this file inside the /projects folder.
-     2. Rename it to something like "my-new-project.html" (lowercase, dashes).
-     3. Update the <title> tag below.
-     4. Replace every [bracketed placeholder] with real content.
-     5. Add a matching project card to index.html pointing to this file.
+     1. Duplicate this file inside /projects/. Rename it (lowercase, dashes).
+     2. Update the <title> tag and all [bracketed placeholders].
+     3. Fill in the Revision Log at the bottom — document your iteration process.
+     4. Add a matching project card to index.html.
      ========================================================================== -->
 <html lang="en">
 <head>
@@ -15,14 +14,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>[Project Title] — Riz Gosla</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<!-- NOTE: ../styles.css because this file is one folder deep -->
 <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 
-<!-- Keep this nav block identical to index.html, but use ../ for links -->
 <nav>
   <div class="inner">
     <a href="../index.html" class="brand">Riz Gosla</a>
@@ -30,7 +27,7 @@
       <li><a href="../index.html#about">About</a></li>
       <li><a href="../index.html#projects">Projects</a></li>
       <li><a href="../index.html#experience">Experience</a></li>
-      <li><a href="../changelog.html">Changelog</a></li>
+      <li><a href="../blog.html">Blog</a></li>
       <li><a href="../index.html#contact">Contact</a></li>
     </ul>
   </div>
@@ -43,11 +40,13 @@
     <div class="meta">
       <span class="mono">[Year]</span>
       <span class="mono">[Category — e.g. Mechanical Design]</span>
+      <!-- Current version badge — update this as the project evolves -->
+      <span class="version-badge mono">v[X.X] — Current</span>
     </div>
 
     <h1>[Project Title]</h1>
 
-    <p class="summary">[One- or two-sentence summary that appears right under the title. Keep it short and compelling.]</p>
+    <p class="summary">[One- or two-sentence summary. Keep it short and compelling.]</p>
 
     <div class="tags">
       <span class="tag">Tool / Skill</span>
@@ -56,6 +55,9 @@
     </div>
   </article>
 
+  <!-- ======================================================================
+       WRITEUP SECTION
+       ====================================================================== -->
   <div class="project-body">
     <span class="mono">Writeup</span>
     <div>
@@ -75,12 +77,101 @@
 
       <h2>What I learned</h2>
       <p>[The honest takeaway. What does this project teach about your engineering thinking?]</p>
-
-      <!-- To add an image: put the file in /projects/images/ and reference it like this:
-           <img src="images/my-diagram.png" alt="Description of image"> -->
     </div>
   </div>
-</div>
+
+  <!-- ======================================================================
+       REVISION LOG
+       A living record of the project's iteration history. Add a new entry
+       each time you make a meaningful change — new geometry, different
+       material, revised approach, test results, etc.
+
+       Status options: current · in-progress · deprecated · scrapped
+       Newest versions go at the TOP.
+       ====================================================================== -->
+  <div class="revision-log">
+    <div class="revision-log-head">
+      <span class="mono">Revision Log</span>
+      <h2>How it <span class="serif">evolved</span>.</h2>
+      <p class="lede" style="font-size:1rem; margin-top:0.75rem;">A version-by-version record of what changed, what broke, and what worked. Updated as the project develops.</p>
+    </div>
+
+    <div class="revision-timeline">
+
+      <!-- ================================================================
+           REVISION ENTRY — duplicate and paste ABOVE the previous entry.
+           Fill in: version, status, date, title, description, changes.
+           ================================================================ -->
+
+      <!-- Current / latest version -->
+      <div class="revision-entry" data-status="current">
+        <div class="revision-marker">
+          <div class="revision-dot"></div>
+          <div class="revision-line"></div>
+        </div>
+        <div class="revision-content">
+          <div class="revision-header">
+            <span class="revision-version mono">v[X.X]</span>
+            <span class="revision-status mono" data-status="current">Current</span>
+            <span class="mono revision-date">[YYYY · MM · DD]</span>
+          </div>
+          <h3 class="revision-title">[Version title — e.g. "Revised lobe geometry for better load distribution"]</h3>
+          <p class="revision-desc">[One or two sentences. What changed and why?]</p>
+          <ul class="revision-changes">
+            <li>[Specific change — e.g. Reduced eccentricity from 3mm to 2.5mm]</li>
+            <li>[Another change]</li>
+            <li>[What this version was testing or fixing]</li>
+          </ul>
+          <!-- Optional: link to a blog post with more detail -->
+          <!-- <a href="../posts/your-post.html" class="revision-post-link mono">Read full build log ↗</a> -->
+        </div>
+      </div>
+
+      <!-- Previous version -->
+      <div class="revision-entry" data-status="deprecated">
+        <div class="revision-marker">
+          <div class="revision-dot"></div>
+          <div class="revision-line"></div>
+        </div>
+        <div class="revision-content">
+          <div class="revision-header">
+            <span class="revision-version mono">v[X.X]</span>
+            <span class="revision-status mono" data-status="deprecated">Superseded</span>
+            <span class="mono revision-date">[YYYY · MM · DD]</span>
+          </div>
+          <h3 class="revision-title">[What this version was]</h3>
+          <p class="revision-desc">[What changed from v1, and why it wasn't the final answer.]</p>
+          <ul class="revision-changes">
+            <li>[Change]</li>
+            <li>[Change]</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- First version — no line below -->
+      <div class="revision-entry first" data-status="deprecated">
+        <div class="revision-marker">
+          <div class="revision-dot"></div>
+        </div>
+        <div class="revision-content">
+          <div class="revision-header">
+            <span class="revision-version mono">v1.0</span>
+            <span class="revision-status mono" data-status="deprecated">Initial</span>
+            <span class="mono revision-date">[YYYY · MM · DD]</span>
+          </div>
+          <h3 class="revision-title">[First attempt title]</h3>
+          <p class="revision-desc">[What the first version was. What assumptions you started with.]</p>
+          <ul class="revision-changes">
+            <li>[What it had]</li>
+            <li>[What it was missing]</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /.container -->
 
 <div class="container">
   <footer>
