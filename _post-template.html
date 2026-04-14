@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!-- ==========================================================================
+     BLOG POST TEMPLATE
+     ==========================================================================
+     HOW TO USE:
+     1. Create a /posts/ folder at the root of your site (same level as index.html).
+     2. Duplicate this file inside /posts/. Rename it: my-post-title.html
+     3. Update the <title>, meta description, and all [bracketed placeholders].
+     4. Add a matching <a class="post-card"> block to blog.html.
+     ========================================================================== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>[Post Title] — Riz Gosla</title>
+<meta name="description" content="[One sentence describing the post.]" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- NOTE: ../styles.css because this file is one folder deep -->
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="../index.html" class="brand">Riz Gosla</a>
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../blog.html" class="active">Blog</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <article class="post-detail">
+    <a href="../blog.html" class="back-link">← Back to blog</a>
+
+    <div class="post-detail-meta">
+      <span class="post-cat mono">[Category — Build Log / Design / Controls / Research]</span>
+      <span class="mono post-date">[YYYY · MM · DD]</span>
+    </div>
+
+    <h1>[Post Title]</h1>
+
+    <p class="summary">[One- or two-sentence summary. Appears right under the title — make it count.]</p>
+
+    <!-- ======================================================================
+         POST BODY — write your content here.
+         Use <h2> for section headings, <p> for paragraphs, <ul>/<ol> for lists.
+         Add images with: <img src="../images/your-image.jpg" alt="description">
+         (create an /images/ folder at the root if you don't have one)
+         ====================================================================== -->
+    <div class="post-body">
+
+      <h2>Context</h2>
+      <p>[Why does this topic matter? What were you trying to figure out?]</p>
+
+      <h2>[Section Two]</h2>
+      <p>[Body paragraph. Use plain, direct language. Write for another engineer who wants to actually understand what you did.]</p>
+
+      <h2>[Section Three]</h2>
+      <p>[Another section. Add as many as the post needs — don't pad, don't cut things that matter.]</p>
+
+      <h2>Takeaway</h2>
+      <p>[One honest paragraph. What did you learn, what would you do differently, what's next?]</p>
+
+    </div>
+
+    <!-- Optional: link to a related project page -->
+    <!-- <div class="post-related">
+      <span class="mono">Related project</span>
+      <a href="../projects/your-project.html" class="post-related-link">Cycloidal Drive ↗</a>
+    </div> -->
+
+  </article>
+</div>
+
+<div class="container">
+  <footer>
+    <span>© 2026 Riz Gosla</span>
+    <span>rizgosla.com</span>
+  </footer>
+</div>
+
+</body>
+</html>

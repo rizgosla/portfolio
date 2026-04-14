@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Site launched — Riz Gosla</title>
+<meta name="description" content="Starting this blog to track the engineering decisions behind every project in real time." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="../index.html" class="brand">Riz Gosla</a>
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../blog.html" class="active">Blog</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <article class="post-detail">
+    <a href="../blog.html" class="back-link">← Back to blog</a>
+
+    <div class="post-detail-meta">
+      <span class="post-cat mono">Build Log</span>
+      <span class="mono post-date">2026 · 04 · 13</span>
+    </div>
+
+    <h1>Site launched — what I'm building and why I'm documenting it</h1>
+
+    <p class="summary">Starting this blog to track the engineering decisions behind every project in real time. Here's the stack I chose, the tradeoffs I made, and what's coming next.</p>
+
+    <div class="post-body">
+
+      <h2>Why document publicly</h2>
+      <p>The best engineering writing I've found online isn't the polished retrospective — it's the build log that was written as someone was figuring things out. This blog is an attempt to do that: write about robotics design decisions while they're still fresh, before the failed paths get edited out.</p>
+      <p>Secondary reason: it forces clearer thinking. If I can't explain why I made a tradeoff, I probably don't understand it well enough yet.</p>
+
+      <h2>What the site is built on</h2>
+      <p>Plain HTML and CSS. No frameworks, no build step, no dependencies. The whole site is files you can open in any text editor. It deploys to Netlify in about 30 seconds via drag-and-drop.</p>
+      <p>The tradeoff is that adding a nav link means editing every HTML file. With five pages that's a two-minute job. If this grows to fifty pages I'll revisit, but the friction keeps the scope honest.</p>
+
+      <h2>What's coming</h2>
+      <p>The cycloidal drive project writeup is next — specifically the FeatureScript generator and how the parametric relationships are structured. After that, whatever I'm actively building.</p>
+      <p>Posts will be categorized as Build Log, Design, Controls, or Research. Filter buttons are on the blog index. The goal is one post every two weeks minimum.</p>
+
+      <h2>Takeaway</h2>
+      <p>Ship something. Improve it publicly. The portfolio that shows process is more honest — and more interesting — than the one that only shows finished work.</p>
+
+    </div>
+
+  </article>
+</div>
+
+<div class="container">
+  <footer>
+    <span>© 2026 Riz Gosla</span>
+    <span>rizgosla.com</span>
+  </footer>
+</div>
+
+</body>
+</html>

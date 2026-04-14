@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blog — Riz Gosla</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="index.html" class="brand">Riz Gosla</a>
+    <ul>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <header class="hero">
+    <div class="eyebrow"><span class="mono">Field Notes</span></div>
+    <h1>Robotics <span class="serif">thinking</span>.</h1>
+    <p class="lede">Build logs, design breakdowns, and notes from the workbench. Updated as projects evolve.</p>
+
+    <!-- Category filter strip -->
+    <div class="blog-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="build-log">Build Log</button>
+      <button class="filter-btn" data-filter="design">Design</button>
+      <button class="filter-btn" data-filter="controls">Controls</button>
+      <button class="filter-btn" data-filter="research">Research</button>
+    </div>
+  </header>
+</div>
+
+<section class="blog-section">
+  <div class="container">
+
+    <!-- ==========================================================================
+         FEATURED / LATEST POST — the top post gets a larger treatment.
+         ========================================================================== -->
+    <a href="posts/example-post.html" class="post-featured" data-category="build-log">
+      <div class="post-featured-meta">
+        <span class="post-cat mono">Build Log</span>
+        <span class="mono post-date">2026 · 04 · 13</span>
+      </div>
+      <h2>Site launched — what I'm building and why I'm documenting it</h2>
+      <p class="post-excerpt">Starting this blog to track the engineering decisions behind every project in real time. Here's the stack I chose, the tradeoffs I made, and what's coming next.</p>
+      <span class="post-read-more">Read post ↗</span>
+    </a>
+
+    <!-- ==========================================================================
+         POST LIST — duplicate one <a class="post-card"> block to add a new post.
+         Update: href, data-category, category label, date, title, excerpt.
+         Categories: build-log · design · controls · research
+         Keep newest posts at the top.
+         ========================================================================== -->
+    <div class="post-grid">
+
+      <a href="posts/example-post.html" class="post-card" data-category="design">
+        <div class="post-card-meta">
+          <span class="post-cat mono">Design</span>
+          <span class="mono post-date">2026 · 04 · 10</span>
+        </div>
+        <h3>Cycloidal drive geometry — why eccentricity is the only knob that matters</h3>
+        <p class="post-excerpt">A breakdown of the parametric relationships that drive lobe profile, output ratio, and torque density in my FeatureScript generator.</p>
+        <span class="post-read-more">Read ↗</span>
+      </a>
+
+      <a href="#" class="post-card" data-category="controls">
+        <div class="post-card-meta">
+          <span class="post-cat mono">Controls</span>
+          <span class="mono post-date">[Date]</span>
+        </div>
+        <h3>[Post Title]</h3>
+        <p class="post-excerpt">[Two-sentence teaser. What's the key insight or question this post addresses?]</p>
+        <span class="post-read-more">Read ↗</span>
+      </a>
+
+      <a href="#" class="post-card" data-category="research">
+        <div class="post-card-meta">
+          <span class="post-cat mono">Research</span>
+          <span class="mono post-date">[Date]</span>
+        </div>
+        <h3>[Post Title]</h3>
+        <p class="post-excerpt">[Two-sentence teaser.]</p>
+        <span class="post-read-more">Read ↗</span>
+      </a>
+
+      <a href="#" class="post-card" data-category="build-log">
+        <div class="post-card-meta">
+          <span class="post-cat mono">Build Log</span>
+          <span class="mono post-date">[Date]</span>
+        </div>
+        <h3>[Post Title]</h3>
+        <p class="post-excerpt">[Two-sentence teaser.]</p>
+        <span class="post-read-more">Read ↗</span>
+      </a>
+
+    </div>
+    <!-- End post-grid -->
+
+  </div>
+</section>
+
+<div class="container">
+  <footer>
+    <span>© 2026 Riz Gosla</span>
+    <span>rizgosla.com</span>
+  </footer>
+</div>
+
+<script>
+  // Category filter — no build tools needed
+  const btns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.post-card, .post-featured');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      cards.forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.style.display = '';
+          card.style.opacity = '1';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
