@@ -42,9 +42,51 @@
       <span class="tag">Onshape</span>
       <span class="tag">FeatureScript</span>
       <span class="tag">Robotics</span>
-      <span class="tag">Mechatronics</span>
     </div>
   </article>
+
+  <!-- ======================================================================
+       IMAGE GALLERY
+       Add images here. Each .gallery-item gets a lightbox on click.
+       Add class="wide" to span full width. Caption is optional.
+       ====================================================================== -->
+  <div class="project-gallery">
+    <div class="project-gallery-head">
+      <span class="mono">Gallery</span>
+      <h2>Build <span class="serif">photos</span>.</h2>
+    </div>
+
+    <div class="gallery-grid">
+
+      <!-- WIDE hero image -->
+      <div class="gallery-item wide">
+        <img src="https://placehold.co/1200x500/1a4d3a/fbfbf8?text=Full+Assembly+Render" alt="Full cycloidal drive assembly render">
+        <div class="gallery-caption"><span>Full assembly — v2.1 render from Onshape</span></div>
+      </div>
+
+      <!-- Two-up images -->
+      <div class="gallery-item">
+        <img src="https://placehold.co/600x450/2d6b52/fbfbf8?text=Lobe+Profile" alt="Cycloidal lobe profile closeup">
+        <div class="gallery-caption"><span>Parametric lobe geometry</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="https://placehold.co/600x450/4a4a46/fbfbf8?text=3D+Print" alt="3D printed cycloidal disc">
+        <div class="gallery-caption"><span>First successful print — PLA+</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="https://placehold.co/600x450/1a4d3a/fbfbf8?text=Exploded+View" alt="Exploded view of drive assembly">
+        <div class="gallery-caption"><span>Exploded assembly view</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="https://placehold.co/600x450/0e0e0c/fbfbf8?text=FeatureScript" alt="FeatureScript code in Onshape">
+        <div class="gallery-caption"><span>FeatureScript generator code</span></div>
+      </div>
+
+    </div>
+  </div>
 
   <div class="project-body">
     <span class="mono">Writeup</span>
@@ -69,7 +111,7 @@
   </div>
 
   <!-- ======================================================================
-       REVISION LOG — cycloidal drive iteration history
+       REVISION LOG
        ====================================================================== -->
   <div class="revision-log">
     <div class="revision-log-head">
@@ -176,6 +218,65 @@
     <span>rizgosla.com</span>
   </footer>
 </div>
+
+<!-- ======================================================================
+     LIGHTBOX — handles all .gallery-item clicks. No per-image setup needed.
+     ====================================================================== -->
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" aria-label="Close">✕</button>
+  <button class="lightbox-nav lightbox-prev" aria-label="Previous">‹</button>
+  <button class="lightbox-nav lightbox-next" aria-label="Next">›</button>
+  <img src="" alt="">
+  <div class="lightbox-caption"></div>
+</div>
+
+<script>
+(function() {
+  const overlay = document.getElementById('lightbox');
+  const lbImg = overlay.querySelector('img');
+  const lbCap = overlay.querySelector('.lightbox-caption');
+  const items = [...document.querySelectorAll('.gallery-item')];
+  let current = 0;
+
+  function show(idx) {
+    current = idx;
+    const item = items[idx];
+    const img = item.querySelector('img');
+    const cap = item.querySelector('.gallery-caption span');
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    lbCap.textContent = cap ? cap.textContent : '';
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function hide() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function next() { show((current + 1) % items.length); }
+  function prev() { show((current - 1 + items.length) % items.length); }
+
+  items.forEach((item, i) => {
+    item.addEventListener('click', () => show(i));
+  });
+
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay || e.target === lbImg) hide();
+  });
+  overlay.querySelector('.lightbox-close').addEventListener('click', hide);
+  overlay.querySelector('.lightbox-prev').addEventListener('click', e => { e.stopPropagation(); prev(); });
+  overlay.querySelector('.lightbox-next').addEventListener('click', e => { e.stopPropagation(); next(); });
+
+  document.addEventListener('keydown', e => {
+    if (!overlay.classList.contains('active')) return;
+    if (e.key === 'Escape') hide();
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft') prev();
+  });
+})();
+</script>
 
 </body>
 </html>
