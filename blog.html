@@ -29,85 +29,14 @@
     <div class="eyebrow"><span class="mono">Field Notes</span></div>
     <h1>Robotics <span class="serif">thinking</span>.</h1>
     <p class="lede">Build logs, design breakdowns, and notes from the workbench. Updated as projects evolve.</p>
-
-    <!-- Category filter strip -->
-    <div class="blog-filters">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="build-log">Build Log</button>
-      <button class="filter-btn" data-filter="design">Design</button>
-      <button class="filter-btn" data-filter="controls">Controls</button>
-      <button class="filter-btn" data-filter="research">Research</button>
-    </div>
+    <div class="blog-filters" id="filters"></div>
   </header>
 </div>
 
 <section class="blog-section">
   <div class="container">
-
-    <!-- ==========================================================================
-         FEATURED / LATEST POST — the top post gets a larger treatment.
-         ========================================================================== -->
-    <a href="posts/example-post.html" class="post-featured" data-category="build-log">
-      <div class="post-featured-meta">
-        <span class="post-cat mono">Build Log</span>
-        <span class="mono post-date">2026 · 04 · 13</span>
-      </div>
-      <h2>Site launched — what I'm building and why I'm documenting it</h2>
-      <p class="post-excerpt">Starting this blog to track the engineering decisions behind every project in real time. Here's the stack I chose, the tradeoffs I made, and what's coming next.</p>
-      <span class="post-read-more">Read post ↗</span>
-    </a>
-
-    <!-- ==========================================================================
-         POST LIST — duplicate one <a class="post-card"> block to add a new post.
-         Update: href, data-category, category label, date, title, excerpt.
-         Categories: build-log · design · controls · research
-         Keep newest posts at the top.
-         ========================================================================== -->
-    <div class="post-grid">
-
-      <a href="posts/example-post.html" class="post-card" data-category="design">
-        <div class="post-card-meta">
-          <span class="post-cat mono">Design</span>
-          <span class="mono post-date">2026 · 04 · 10</span>
-        </div>
-        <h3>Cycloidal drive geometry — why eccentricity is the only knob that matters</h3>
-        <p class="post-excerpt">A breakdown of the parametric relationships that drive lobe profile, output ratio, and torque density in my FeatureScript generator.</p>
-        <span class="post-read-more">Read ↗</span>
-      </a>
-
-      <a href="#" class="post-card" data-category="controls">
-        <div class="post-card-meta">
-          <span class="post-cat mono">Controls</span>
-          <span class="mono post-date">[Date]</span>
-        </div>
-        <h3>[Post Title]</h3>
-        <p class="post-excerpt">[Two-sentence teaser. What's the key insight or question this post addresses?]</p>
-        <span class="post-read-more">Read ↗</span>
-      </a>
-
-      <a href="#" class="post-card" data-category="research">
-        <div class="post-card-meta">
-          <span class="post-cat mono">Research</span>
-          <span class="mono post-date">[Date]</span>
-        </div>
-        <h3>[Post Title]</h3>
-        <p class="post-excerpt">[Two-sentence teaser.]</p>
-        <span class="post-read-more">Read ↗</span>
-      </a>
-
-      <a href="#" class="post-card" data-category="build-log">
-        <div class="post-card-meta">
-          <span class="post-cat mono">Build Log</span>
-          <span class="mono post-date">[Date]</span>
-        </div>
-        <h3>[Post Title]</h3>
-        <p class="post-excerpt">[Two-sentence teaser.]</p>
-        <span class="post-read-more">Read ↗</span>
-      </a>
-
-    </div>
-    <!-- End post-grid -->
-
+    <div id="featured"></div>
+    <div class="post-grid" id="post-grid"></div>
   </div>
 </section>
 
@@ -119,25 +48,96 @@
 </div>
 
 <script>
-  // Category filter — no build tools needed
-  const btns = document.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('.post-card, .post-featured');
+// ==========================================================================
+// POST DATA — Add new posts here. Newest first.
+//
+//   href:     path to the post HTML file (in /posts/)
+//   category: build-log | design | controls | research
+//   date:     YYYY · MM · DD
+//   title:    post title
+//   excerpt:  1–2 sentence teaser
+//   featured: true for the top/hero post (only set one)
+//
+// To add a post:
+//   1. Duplicate posts/_post-template.html → posts/your-slug.html
+//   2. Fill in the template placeholders
+//   3. Add an entry below (copy an existing one, update the fields)
+//   Done — the page builds itself.
+// ==========================================================================
+const posts = [
 
-  btns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      btns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      cards.forEach(card => {
-        if (filter === 'all' || card.dataset.category === filter) {
-          card.style.display = '';
-          card.style.opacity = '1';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
+  {
+    href: "posts/example-post.html",
+    category: "build-log",
+    date: "2026 · 04 · 13",
+    title: "Site launched — what I'm building and why I'm documenting it",
+    excerpt: "Starting this blog to track the engineering decisions behind every project in real time. Here's the stack I chose, the tradeoffs I made, and what's coming next.",
+    featured: true
+  },
+
+  {
+    href: "posts/example-post.html",
+    category: "design",
+    date: "2026 · 04 · 10",
+    title: "Cycloidal drive geometry — why eccentricity is the only knob that matters",
+    excerpt: "A breakdown of the parametric relationships that drive lobe profile, output ratio, and torque density in my FeatureScript generator."
+  }
+
+];
+// ==========================================================================
+// RENDERING — don't edit below unless changing the blog layout.
+// ==========================================================================
+
+function fmtCat(c) {
+  return c.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
+}
+
+const featuredPost = posts.find(p => p.featured);
+const gridPosts = posts.filter(p => !p.featured);
+
+// Render featured
+document.getElementById('featured').innerHTML = featuredPost ? `
+  <a href="${featuredPost.href}" class="post-featured" data-category="${featuredPost.category}">
+    <div class="post-featured-meta">
+      <span class="post-cat mono">${fmtCat(featuredPost.category)}</span>
+      <span class="mono post-date">${featuredPost.date}</span>
+    </div>
+    <h2>${featuredPost.title}</h2>
+    <p class="post-excerpt">${featuredPost.excerpt}</p>
+    <span class="post-read-more">Read post ↗</span>
+  </a>` : '';
+
+// Render grid
+document.getElementById('post-grid').innerHTML = gridPosts.length
+  ? gridPosts.map(p => `
+    <a href="${p.href}" class="post-card" data-category="${p.category}">
+      <div class="post-card-meta">
+        <span class="post-cat mono">${fmtCat(p.category)}</span>
+        <span class="mono post-date">${p.date}</span>
+      </div>
+      <h3>${p.title}</h3>
+      <p class="post-excerpt">${p.excerpt}</p>
+      <span class="post-read-more">Read ↗</span>
+    </a>`).join('')
+  : '';
+
+// Build filters from categories that actually exist
+const cats = [...new Set(posts.map(p => p.category))];
+const filtersEl = document.getElementById('filters');
+filtersEl.innerHTML =
+  `<button class="filter-btn active" data-filter="all">All</button>` +
+  cats.map(c => `<button class="filter-btn" data-filter="${c}">${fmtCat(c)}</button>`).join('');
+
+filtersEl.addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  filtersEl.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const f = btn.dataset.filter;
+  document.querySelectorAll('.post-card, .post-featured').forEach(card => {
+    card.style.display = (f === 'all' || card.dataset.category === f) ? '' : 'none';
   });
+});
 </script>
 
 </body>
