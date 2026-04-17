@@ -45,46 +45,33 @@
     </div>
   </article>
 
-  <!-- ======================================================================
-       IMAGE GALLERY
-       Add images here. Each .gallery-item gets a lightbox on click.
-       Add class="wide" to span full width. Caption is optional.
-       ====================================================================== -->
+  <!-- IMAGE GALLERY -->
   <div class="project-gallery">
     <div class="project-gallery-head">
       <span class="mono">Gallery</span>
       <h2>Build <span class="serif">photos</span>.</h2>
     </div>
-
     <div class="gallery-grid">
-
-      <!-- WIDE hero image -->
       <div class="gallery-item wide">
         <img src="https://placehold.co/1200x500/1a4d3a/fbfbf8?text=Full+Assembly+Render" alt="Full cycloidal drive assembly render">
         <div class="gallery-caption"><span>Full assembly — v2.1 render from Onshape</span></div>
       </div>
-
-      <!-- Two-up images -->
       <div class="gallery-item">
         <img src="https://placehold.co/600x450/2d6b52/fbfbf8?text=Lobe+Profile" alt="Cycloidal lobe profile closeup">
         <div class="gallery-caption"><span>Parametric lobe geometry</span></div>
       </div>
-
       <div class="gallery-item">
         <img src="https://placehold.co/600x450/4a4a46/fbfbf8?text=3D+Print" alt="3D printed cycloidal disc">
         <div class="gallery-caption"><span>First successful print — PLA+</span></div>
       </div>
-
       <div class="gallery-item">
         <img src="https://placehold.co/600x450/1a4d3a/fbfbf8?text=Exploded+View" alt="Exploded view of drive assembly">
         <div class="gallery-caption"><span>Exploded assembly view</span></div>
       </div>
-
       <div class="gallery-item">
         <img src="https://placehold.co/600x450/0e0e0c/fbfbf8?text=FeatureScript" alt="FeatureScript code in Onshape">
         <div class="gallery-caption"><span>FeatureScript generator code</span></div>
       </div>
-
     </div>
   </div>
 
@@ -110,9 +97,7 @@
     </div>
   </div>
 
-  <!-- ======================================================================
-       REVISION LOG
-       ====================================================================== -->
+  <!-- REVISION LOG -->
   <div class="revision-log">
     <div class="revision-log-head">
       <span class="mono">Revision Log</span>
@@ -140,6 +125,21 @@
             <li>Lobe-to-housing clearance updated from 0.2mm to 0.15mm</li>
             <li>Backlash reduced from ~2.5° to ~0.8° in physical test</li>
           </ul>
+          <!-- REVISION IMAGES: replace src values with your actual image paths -->
+          <div class="revision-images">
+            <div class="revision-img-wrap">
+              <img src="https://placehold.co/600x450/1a4d3a/fbfbf8?text=v2.1+Assembly" alt="v2.1 final assembly">
+              <div class="revision-img-caption"><span>Final assembly</span></div>
+            </div>
+            <div class="revision-img-wrap">
+              <img src="https://placehold.co/600x450/2d6b52/fbfbf8?text=Pin+Fit+Test" alt="Output pin fit test">
+              <div class="revision-img-caption"><span>Pin press-fit test</span></div>
+            </div>
+            <div class="revision-img-wrap">
+              <img src="https://placehold.co/600x450/3a3a36/fbfbf8?text=Backlash+Measure" alt="Backlash measurement">
+              <div class="revision-img-caption"><span>Backlash measurement</span></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -162,6 +162,16 @@
             <li>Pin circle diameter auto-calculated from eccentricity and lobe count</li>
             <li>First version to successfully print without geometric interference</li>
           </ul>
+          <div class="revision-images">
+            <div class="revision-img-wrap">
+              <img src="https://placehold.co/600x450/1a4d3a/fbfbf8?text=v2.0+CAD" alt="v2.0 CAD model">
+              <div class="revision-img-caption"><span>v2.0 CAD model</span></div>
+            </div>
+            <div class="revision-img-wrap">
+              <img src="https://placehold.co/600x450/4a4a46/fbfbf8?text=First+Good+Print" alt="First successful print">
+              <div class="revision-img-caption"><span>First interference-free print</span></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -183,6 +193,16 @@
             <li>Fixed sign error in lobe offset equation</li>
             <li>Clearance gaps added between lobe tips and housing pins</li>
           </ul>
+          <div class="revision-images">
+            <div class="revision-img-wrap">
+              <img src="https://placehold.co/600x450/2d6b52/fbfbf8?text=v1.1+Housing" alt="v1.1 housing design">
+              <div class="revision-img-caption"><span>Housing geometry</span></div>
+            </div>
+            <div class="revision-img-wrap">
+              <img src="https://placehold.co/600x450/0e0e0c/fbfbf8?text=Interference+Issue" alt="Lobe interference problem">
+              <div class="revision-img-caption"><span>Interference at low eccentricity</span></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -204,6 +224,16 @@
             <li>Manual housing design (not yet part of the script)</li>
             <li>Printed in PLA — print succeeded but tolerance too loose for real use</li>
           </ul>
+          <div class="revision-images">
+            <div class="revision-img-wrap">
+              <img src="https://placehold.co/600x450/4a4a46/fbfbf8?text=v1.0+Lobe+Sketch" alt="v1.0 lobe profile sketch">
+              <div class="revision-img-caption"><span>First lobe profile</span></div>
+            </div>
+            <div class="revision-img-wrap">
+              <img src="https://placehold.co/600x450/1a4d3a/fbfbf8?text=Proof+of+Concept+Print" alt="v1.0 proof of concept print">
+              <div class="revision-img-caption"><span>Proof of concept print</span></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -219,9 +249,7 @@
   </footer>
 </div>
 
-<!-- ======================================================================
-     LIGHTBOX — handles all .gallery-item clicks. No per-image setup needed.
-     ====================================================================== -->
+<!-- LIGHTBOX — handles gallery AND revision image clicks -->
 <div class="lightbox-overlay" id="lightbox">
   <button class="lightbox-close" aria-label="Close">✕</button>
   <button class="lightbox-nav lightbox-prev" aria-label="Previous">‹</button>
@@ -235,14 +263,16 @@
   const overlay = document.getElementById('lightbox');
   const lbImg = overlay.querySelector('img');
   const lbCap = overlay.querySelector('.lightbox-caption');
-  const items = [...document.querySelectorAll('.gallery-item')];
+
+  // Wire up both gallery items AND revision image wraps
+  const items = [...document.querySelectorAll('.gallery-item, .revision-img-wrap')];
   let current = 0;
 
   function show(idx) {
     current = idx;
     const item = items[idx];
     const img = item.querySelector('img');
-    const cap = item.querySelector('.gallery-caption span');
+    const cap = item.querySelector('.gallery-caption span, .revision-img-caption span');
     lbImg.src = img.src;
     lbImg.alt = img.alt;
     lbCap.textContent = cap ? cap.textContent : '';
@@ -258,13 +288,9 @@
   function next() { show((current + 1) % items.length); }
   function prev() { show((current - 1 + items.length) % items.length); }
 
-  items.forEach((item, i) => {
-    item.addEventListener('click', () => show(i));
-  });
+  items.forEach((item, i) => item.addEventListener('click', () => show(i)));
 
-  overlay.addEventListener('click', e => {
-    if (e.target === overlay || e.target === lbImg) hide();
-  });
+  overlay.addEventListener('click', e => { if (e.target === overlay || e.target === lbImg) hide(); });
   overlay.querySelector('.lightbox-close').addEventListener('click', hide);
   overlay.querySelector('.lightbox-prev').addEventListener('click', e => { e.stopPropagation(); prev(); });
   overlay.querySelector('.lightbox-next').addEventListener('click', e => { e.stopPropagation(); next(); });

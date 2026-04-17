@@ -54,34 +54,51 @@
     </div>
   </article>
 
-  <!-- IMAGE GALLERY — add class="wide" to span full width, caption is optional -->
+  <!-- ======================================================================
+       IMAGE GALLERY
+       - The first item has class="wide" — it spans full width as a hero image.
+       - All other items sit in a 2-column grid below it.
+       - Clicking any image opens the lightbox. Captions appear on hover.
+       - Add or remove .gallery-item blocks as needed.
+       - Images live in projects/images/. Example: src="images/my-photo.jpg"
+       ====================================================================== -->
   <div class="project-gallery">
     <div class="project-gallery-head">
       <span class="mono">Gallery</span>
       <h2>Build <span class="serif">photos</span>.</h2>
     </div>
     <div class="gallery-grid">
+
       <div class="gallery-item wide">
         <img src="images/[hero-image].jpg" alt="[description]">
         <div class="gallery-caption"><span>[Caption]</span></div>
       </div>
+
       <div class="gallery-item">
         <img src="images/[image-2].jpg" alt="[description]">
         <div class="gallery-caption"><span>[Caption]</span></div>
       </div>
+
       <div class="gallery-item">
         <img src="images/[image-3].jpg" alt="[description]">
         <div class="gallery-caption"><span>[Caption]</span></div>
       </div>
+
+      <!-- Duplicate the block above to add more images -->
+
     </div>
   </div>
 
-  <!-- WRITEUP -->
+  <!-- ======================================================================
+       WRITEUP
+       Use <h2> for section headings, <p> for paragraphs, <ul> for lists.
+       ====================================================================== -->
   <div class="project-body">
     <span class="mono">Writeup</span>
     <div>
       <h2>Overview</h2>
       <p>[What is this project? Why did you build it?]</p>
+
       <h2>Approach</h2>
       <p>[Key decisions and interesting parts.]</p>
       <ul>
@@ -89,23 +106,38 @@
         <li>[Key decision two]</li>
         <li>[Key decision three]</li>
       </ul>
+
       <h2>Results</h2>
       <p>[What worked, what didn't, what would you change?]</p>
+
       <h2>What I learned</h2>
       <p>[Honest takeaway.]</p>
     </div>
   </div>
 
-  <!-- REVISION LOG — newest at top, status: current / in-progress / deprecated -->
+  <!-- ======================================================================
+       REVISION LOG
+       - Newest version at the top, oldest at the bottom.
+       - The bottom-most entry should have class="revision-entry first".
+       - data-status options: current | in-progress | deprecated
+       - Images are optional — remove the revision-images block if you
+         don't have photos for a particular version yet.
+       ====================================================================== -->
   <div class="revision-log">
     <div class="revision-log-head">
       <span class="mono">Revision Log</span>
       <h2>How it <span class="serif">evolved</span>.</h2>
-      <p class="lede" style="font-size:1rem; margin-top:0.75rem;">What changed, what broke, what worked.</p>
+      <p style="font-size:1rem; color: var(--ink-soft); font-weight:300; margin-top:0.75rem; max-width: 52ch;">A version-by-version record of what changed and why. Updated as the design develops.</p>
     </div>
+
     <div class="revision-timeline">
+
+      <!-- CURRENT VERSION ================================================= -->
       <div class="revision-entry" data-status="current">
-        <div class="revision-marker"><div class="revision-dot"></div><div class="revision-line"></div></div>
+        <div class="revision-marker">
+          <div class="revision-dot"></div>
+          <div class="revision-line"></div>
+        </div>
         <div class="revision-content">
           <div class="revision-header">
             <span class="revision-version mono">v[X.X]</span>
@@ -114,11 +146,59 @@
           </div>
           <h3 class="revision-title">[Version title]</h3>
           <p class="revision-desc">[What changed and why?]</p>
-          <ul class="revision-changes"><li>[Change]</li><li>[Change]</li></ul>
+          <ul class="revision-changes">
+            <li>[Change]</li>
+            <li>[Change]</li>
+            <li>[Change]</li>
+          </ul>
+          <!-- Optional: remove this block if you have no images for this version -->
+          <div class="revision-images">
+            <div class="revision-img-wrap">
+              <img src="images/[version-image-1].jpg" alt="[description]">
+              <div class="revision-img-caption"><span>[Caption]</span></div>
+            </div>
+            <div class="revision-img-wrap">
+              <img src="images/[version-image-2].jpg" alt="[description]">
+              <div class="revision-img-caption"><span>[Caption]</span></div>
+            </div>
+            <!-- Add more revision-img-wrap blocks as needed -->
+          </div>
         </div>
       </div>
+
+      <!-- OLDER VERSION — duplicate this block for each previous version === -->
+      <div class="revision-entry" data-status="deprecated">
+        <div class="revision-marker">
+          <div class="revision-dot"></div>
+          <div class="revision-line"></div>
+        </div>
+        <div class="revision-content">
+          <div class="revision-header">
+            <span class="revision-version mono">v[X.X]</span>
+            <span class="revision-status mono" data-status="deprecated">Superseded</span>
+            <span class="mono revision-date">[YYYY · MM · DD]</span>
+          </div>
+          <h3 class="revision-title">[Version title]</h3>
+          <p class="revision-desc">[What changed and why?]</p>
+          <ul class="revision-changes">
+            <li>[Change]</li>
+            <li>[Change]</li>
+          </ul>
+          <div class="revision-images">
+            <div class="revision-img-wrap">
+              <img src="images/[version-image].jpg" alt="[description]">
+              <div class="revision-img-caption"><span>[Caption]</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INITIAL VERSION — always keep class="first" on the oldest entry = -->
       <div class="revision-entry first" data-status="deprecated">
-        <div class="revision-marker"><div class="revision-dot"></div></div>
+        <div class="revision-marker">
+          <div class="revision-dot"></div>
+          <!-- No revision-line on the last entry -->
+        </div>
         <div class="revision-content">
           <div class="revision-header">
             <span class="revision-version mono">v1.0</span>
@@ -126,13 +206,24 @@
             <span class="mono revision-date">[YYYY · MM · DD]</span>
           </div>
           <h3 class="revision-title">[First attempt]</h3>
-          <p class="revision-desc">[Starting assumptions.]</p>
-          <ul class="revision-changes"><li>[What it had]</li><li>[What it was missing]</li></ul>
+          <p class="revision-desc">[Starting point and assumptions.]</p>
+          <ul class="revision-changes">
+            <li>[What it had]</li>
+            <li>[What it was missing]</li>
+          </ul>
+          <div class="revision-images">
+            <div class="revision-img-wrap">
+              <img src="images/[v1-image].jpg" alt="[description]">
+              <div class="revision-img-caption"><span>[Caption]</span></div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+
+    </div><!-- /.revision-timeline -->
+  </div><!-- /.revision-log -->
+
+</div><!-- /.container -->
 
 <div class="container">
   <footer>
@@ -141,7 +232,10 @@
   </footer>
 </div>
 
-<!-- LIGHTBOX — auto-wired to all .gallery-item elements -->
+<!-- ======================================================================
+     LIGHTBOX — handles all .gallery-item AND .revision-img-wrap clicks.
+     No changes needed here when you add more images.
+     ====================================================================== -->
 <div class="lightbox-overlay" id="lightbox">
   <button class="lightbox-close" aria-label="Close">✕</button>
   <button class="lightbox-nav lightbox-prev" aria-label="Previous">‹</button>
@@ -155,23 +249,37 @@
   const overlay = document.getElementById('lightbox');
   const lbImg = overlay.querySelector('img');
   const lbCap = overlay.querySelector('.lightbox-caption');
-  const items = [...document.querySelectorAll('.gallery-item')];
+
+  const items = [...document.querySelectorAll('.gallery-item, .revision-img-wrap')];
   let current = 0;
-  function show(i) {
-    current = i;
-    const item = items[i], img = item.querySelector('img'), cap = item.querySelector('.gallery-caption span');
-    lbImg.src = img.src; lbImg.alt = img.alt;
+
+  function show(idx) {
+    current = idx;
+    const item = items[idx];
+    const img = item.querySelector('img');
+    const cap = item.querySelector('.gallery-caption span, .revision-img-caption span');
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
     lbCap.textContent = cap ? cap.textContent : '';
-    overlay.classList.add('active'); document.body.style.overflow = 'hidden';
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
   }
-  function hide() { overlay.classList.remove('active'); document.body.style.overflow = ''; }
+
+  function hide() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
   function next() { show((current + 1) % items.length); }
   function prev() { show((current - 1 + items.length) % items.length); }
+
   items.forEach((item, i) => item.addEventListener('click', () => show(i)));
+
   overlay.addEventListener('click', e => { if (e.target === overlay || e.target === lbImg) hide(); });
   overlay.querySelector('.lightbox-close').addEventListener('click', hide);
   overlay.querySelector('.lightbox-prev').addEventListener('click', e => { e.stopPropagation(); prev(); });
   overlay.querySelector('.lightbox-next').addEventListener('click', e => { e.stopPropagation(); next(); });
+
   document.addEventListener('keydown', e => {
     if (!overlay.classList.contains('active')) return;
     if (e.key === 'Escape') hide();
