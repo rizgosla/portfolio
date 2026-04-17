@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Blog — Riz Gosla</title>
+<title>Industry Notes — Riz Gosla</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
       <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#projects">Projects</a></li>
       <li><a href="index.html#experience">Experience</a></li>
-      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="blog.html" class="active">Industry Notes</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
   </div>
@@ -26,9 +26,18 @@
 
 <div class="container">
   <header class="hero">
-    <div class="eyebrow"><span class="mono">Field Notes</span></div>
-    <h1>Robotics <span class="serif">thinking</span>.</h1>
-    <p class="lede">Build logs, design breakdowns, and notes from the workbench. Updated as projects evolve.</p>
+    <div class="eyebrow"><span class="mono">Video Companion · Industry Notes</span></div>
+    <h1>Robotics <span class="serif">industry</span>, unpacked.</h1>
+    <p class="lede">Every video I post gets a companion article here — more data, more sources, more context than 60 seconds allows. Covering trends, companies, and the technology reshaping the industry.</p>
+
+    <div class="blog-channel-cta">
+      <a href="https://youtube.com/@rizgosla" target="_blank" rel="noopener" class="yt-follow-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        Watch on YouTube
+      </a>
+      <span class="mono blog-channel-note">New shorts weekly · Long-form when it warrants it</span>
+    </div>
+
     <div class="blog-filters" id="filters"></div>
   </header>
 </div>
@@ -52,35 +61,78 @@
 // POST DATA — Add new posts here. Newest first.
 //
 //   href:     path to the post HTML file (in /posts/)
-//   category: build-log | design | controls | research
+//   category: industry-trend | company-spotlight | tech-breakdown | deep-dive
 //   date:     YYYY · MM · DD
 //   title:    post title
 //   excerpt:  1–2 sentence teaser
-//   featured: true for the top/hero post (only set one)
+//   youtube:  (optional) YouTube video URL to link — omit if no video yet
+//   featured: true for the top/hero post (only set one at a time)
+//
+// CATEGORIES:
+//   industry-trend    — market shifts, funding rounds, acquisition activity
+//   company-spotlight — deep look at a single company's tech or strategy
+//   tech-breakdown    — how a specific technology actually works
+//   deep-dive         — long-form analysis that goes beyond a single short
 //
 // To add a post:
 //   1. Duplicate posts/_post-template.html → posts/your-slug.html
 //   2. Fill in the template placeholders
 //   3. Add an entry below (copy an existing one, update the fields)
-//   Done — the page builds itself.
+//   Done — the page rebuilds itself.
 // ==========================================================================
 const posts = [
 
   {
-    href: "posts/example-post.html",
-    category: "build-log",
+    href: "posts/humanoid-robots-2026.html",
+    category: "industry-trend",
     date: "2026 · 04 · 13",
-    title: "Site launched — what I'm building and why I'm documenting it",
-    excerpt: "Starting this blog to track the engineering decisions behind every project in real time. Here's the stack I chose, the tradeoffs I made, and what's coming next.",
+    title: "Why every major tech company is racing to build a humanoid robot right now",
+    excerpt: "Figure, 1X, Apptronik, Tesla Optimus, Boston Dynamics Atlas — the space went from fringe to overcrowded in 18 months. Here's what's actually driving the timeline compression.",
+    youtube: "https://youtube.com/shorts/example",
     featured: true
   },
 
   {
-    href: "posts/example-post.html",
-    category: "design",
+    href: "posts/nvidia-robotics-stack.html",
+    category: "company-spotlight",
     date: "2026 · 04 · 10",
-    title: "Cycloidal drive geometry — why eccentricity is the only knob that matters",
-    excerpt: "A breakdown of the parametric relationships that drive lobe profile, output ratio, and torque density in my FeatureScript generator."
+    title: "NVIDIA's robotics play is bigger than Isaac Sim — here's the full stack",
+    excerpt: "From simulation to edge inference, NVIDIA is quietly positioning itself as the infrastructure layer for the entire robotics industry. What they're building and why it matters.",
+    youtube: "https://youtube.com/shorts/example2"
+  },
+
+  {
+    href: "posts/cycloidal-vs-harmonic.html",
+    category: "tech-breakdown",
+    date: "2026 · 04 · 06",
+    title: "Cycloidal vs. harmonic drives — which one actually belongs in a robot joint",
+    excerpt: "The actuator wars have a clear answer depending on what you're optimizing for. Breaking down backlash, backdrivability, and torque density for real robot applications.",
+    youtube: "https://youtube.com/shorts/example3"
+  },
+
+  {
+    href: "posts/boston-dynamics-atlas-electric.html",
+    category: "company-spotlight",
+    date: "2026 · 03 · 28",
+    title: "Boston Dynamics retired Atlas hydraulic — what the electric pivot actually signals",
+    excerpt: "The move isn't just about power efficiency. It's about the supply chain, the maintenance model, and what Hyundai wants from the platform. Reading between the lines."
+  },
+
+  {
+    href: "posts/reinforcement-learning-locomotion.html",
+    category: "tech-breakdown",
+    date: "2026 · 03 · 20",
+    title: "How RL-trained locomotion actually works — and why sim-to-real is still the hard problem",
+    excerpt: "Reinforcement learning in simulation sounds like magic until you try to deploy it. The gap between sim and real is the entire challenge, and here's what's closing it.",
+    youtube: "https://youtube.com/shorts/example4"
+  },
+
+  {
+    href: "posts/robotics-funding-q1-2026.html",
+    category: "deep-dive",
+    date: "2026 · 03 · 12",
+    title: "Q1 2026 robotics funding: who got money, who didn't, and what it tells us",
+    excerpt: "A full breakdown of Q1 funding rounds across hardware, software, and enabling infrastructure — with a read on which bets the money is actually making."
   }
 
 ];
@@ -88,12 +140,27 @@ const posts = [
 // RENDERING — don't edit below unless changing the blog layout.
 // ==========================================================================
 
+const CATEGORY_LABELS = {
+  'industry-trend':    'Industry Trend',
+  'company-spotlight': 'Company Spotlight',
+  'tech-breakdown':    'Tech Breakdown',
+  'deep-dive':         'Deep Dive'
+};
+
 function fmtCat(c) {
-  return c.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
+  return CATEGORY_LABELS[c] || c.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
+}
+
+function ytBadge(url) {
+  if (!url) return '';
+  return `<a href="${url}" target="_blank" rel="noopener" class="post-yt-badge" onclick="event.stopPropagation()">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    Watch video
+  </a>`;
 }
 
 const featuredPost = posts.find(p => p.featured);
-const gridPosts = posts.filter(p => !p.featured);
+const gridPosts    = posts.filter(p => !p.featured);
 
 // Render featured
 document.getElementById('featured').innerHTML = featuredPost ? `
@@ -101,10 +168,17 @@ document.getElementById('featured').innerHTML = featuredPost ? `
     <div class="post-featured-meta">
       <span class="post-cat mono">${fmtCat(featuredPost.category)}</span>
       <span class="mono post-date">${featuredPost.date}</span>
+      ${featuredPost.youtube ? `<span class="post-has-video mono">
+        <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        Video available
+      </span>` : ''}
     </div>
     <h2>${featuredPost.title}</h2>
     <p class="post-excerpt">${featuredPost.excerpt}</p>
-    <span class="post-read-more">Read post ↗</span>
+    <div class="post-featured-actions">
+      <span class="post-read-more">Read companion article ↗</span>
+      ${ytBadge(featuredPost.youtube)}
+    </div>
   </a>` : '';
 
 // Render grid
@@ -114,19 +188,27 @@ document.getElementById('post-grid').innerHTML = gridPosts.length
       <div class="post-card-meta">
         <span class="post-cat mono">${fmtCat(p.category)}</span>
         <span class="mono post-date">${p.date}</span>
+        ${p.youtube ? `<span class="post-has-video mono">
+          <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          Video
+        </span>` : ''}
       </div>
       <h3>${p.title}</h3>
       <p class="post-excerpt">${p.excerpt}</p>
-      <span class="post-read-more">Read ↗</span>
+      <div class="post-card-footer">
+        <span class="post-read-more">Read ↗</span>
+        ${ytBadge(p.youtube)}
+      </div>
     </a>`).join('')
   : '';
 
-// Build filters from categories that actually exist
+// Build filters from categories present in posts
 const cats = [...new Set(posts.map(p => p.category))];
 const filtersEl = document.getElementById('filters');
 filtersEl.innerHTML =
   `<button class="filter-btn active" data-filter="all">All</button>` +
-  cats.map(c => `<button class="filter-btn" data-filter="${c}">${fmtCat(c)}</button>`).join('');
+  cats.map(c => `<button class="filter-btn" data-filter="${c}">${fmtCat(c)}</button>`).join('') +
+  `<button class="filter-btn" data-filter="has-video">Has Video</button>`;
 
 filtersEl.addEventListener('click', e => {
   const btn = e.target.closest('.filter-btn');
@@ -135,7 +217,14 @@ filtersEl.addEventListener('click', e => {
   btn.classList.add('active');
   const f = btn.dataset.filter;
   document.querySelectorAll('.post-card, .post-featured').forEach(card => {
-    card.style.display = (f === 'all' || card.dataset.category === f) ? '' : 'none';
+    if (f === 'all') {
+      card.style.display = '';
+    } else if (f === 'has-video') {
+      const postData = posts.find(p => card.querySelector('h2,h3')?.textContent === p.title);
+      card.style.display = (postData && postData.youtube) ? '' : 'none';
+    } else {
+      card.style.display = (card.dataset.category === f) ? '' : 'none';
+    }
   });
 });
 </script>
