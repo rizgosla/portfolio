@@ -3,10 +3,15 @@
      BLOG POST TEMPLATE
      ==========================================================================
      HOW TO USE:
-     1. Create a /posts/ folder at the root of your site (same level as index.html).
-     2. Duplicate this file inside /posts/. Rename it: my-post-title.html
-     3. Update the <title>, meta description, and all [bracketed placeholders].
-     4. Add a matching <a class="post-card"> block to blog.html.
+     1. Duplicate this file inside /posts/. Rename it: my-post-title.html
+     2. Update the <title>, meta description, and all [bracketed placeholders].
+     3. Add a matching entry to the posts array in blog.html.
+
+     CATEGORIES:
+       Industry Trend    — market shifts, funding rounds, acquisition activity
+       Company Spotlight — deep look at a single company's tech or strategy
+       Tech Breakdown    — how a specific technology actually works
+       Deep Dive         — long-form analysis that goes beyond a single short
      ========================================================================== -->
 <html lang="en">
 <head>
@@ -17,7 +22,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<!-- NOTE: ../styles.css because this file is one folder deep -->
 <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -29,7 +33,7 @@
       <li><a href="../index.html#about">About</a></li>
       <li><a href="../index.html#projects">Projects</a></li>
       <li><a href="../index.html#experience">Experience</a></li>
-      <li><a href="../blog.html" class="active">Blog</a></li>
+      <li><a href="../blog.html" class="active">Industry Notes</a></li>
       <li><a href="../index.html#contact">Contact</a></li>
     </ul>
   </div>
@@ -37,11 +41,18 @@
 
 <div class="container">
   <article class="post-detail">
-    <a href="../blog.html" class="back-link">← Back to blog</a>
+    <a href="../blog.html" class="back-link">← Back to Industry Notes</a>
 
     <div class="post-detail-meta">
-      <span class="post-cat mono">[Category — Build Log / Design / Controls / Research]</span>
+      <span class="post-cat mono">[Category — Industry Trend / Company Spotlight / Tech Breakdown / Deep Dive]</span>
       <span class="mono post-date">[YYYY · MM · DD]</span>
+      <!-- If this post has a video, add the badge below. Remove if no video. -->
+      <!--
+      <a href="[YouTube URL]" target="_blank" rel="noopener" class="post-yt-badge">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        Watch video
+      </a>
+      -->
     </div>
 
     <h1>[Post Title]</h1>
@@ -52,29 +63,30 @@
          POST BODY — write your content here.
          Use <h2> for section headings, <p> for paragraphs, <ul>/<ol> for lists.
          Add images with: <img src="../images/your-image.jpg" alt="description">
-         (create an /images/ folder at the root if you don't have one)
          ====================================================================== -->
     <div class="post-body">
 
       <h2>Context</h2>
-      <p>[Why does this topic matter? What were you trying to figure out?]</p>
+      <p>[Why does this topic matter? What's the setup — market shift, company move, technology gap?]</p>
 
       <h2>[Section Two]</h2>
-      <p>[Body paragraph. Use plain, direct language. Write for another engineer who wants to actually understand what you did.]</p>
+      <p>[The substance. Go deeper than the video — include data, sources, context that wouldn't fit in 60 seconds.]</p>
 
       <h2>[Section Three]</h2>
-      <p>[Another section. Add as many as the post needs — don't pad, don't cut things that matter.]</p>
+      <p>[Keep adding sections as needed. Don't pad, don't cut things that matter.]</p>
 
-      <h2>Takeaway</h2>
-      <p>[One honest paragraph. What did you learn, what would you do differently, what's next?]</p>
+      <h2>What to watch</h2>
+      <p>[Forward-looking paragraph. What's the signal to track, what happens next, what would change your read on this?]</p>
 
     </div>
 
-    <!-- Optional: link to a related project page -->
-    <!-- <div class="post-related">
-      <span class="mono">Related project</span>
-      <a href="../projects/your-project.html" class="post-related-link">Cycloidal Drive ↗</a>
-    </div> -->
+    <!-- Optional: link to a related video or project -->
+    <!--
+    <div class="post-related">
+      <span class="mono">Related</span>
+      <a href="[YouTube URL]" target="_blank" rel="noopener" class="post-related-link">Watch the video ↗</a>
+    </div>
+    -->
 
   </article>
 </div>
