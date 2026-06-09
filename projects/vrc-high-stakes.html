@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<!-- ==========================================================================
+     VRC HIGH STAKES — 742A Perrybotics  |  case-study project page
+     Built on the site's own components (styles.css). Requires the
+     "CASE STUDY COMPONENTS" block appended to styles.css.
+     Images expected at: ../media/vrc-high-stakes/<filename>
+     Any not-yet-uploaded image shows a labelled placeholder until it exists.
+     ========================================================================== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>High Stakes Competition Robot — Riz Gosla</title>
+<meta name="description" content="A sub-18-inch VEX V5 robot built around a power-take-off climb." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script>
+/* show the filename to upload if an image isn't there yet */
+function csImgFallback(img){
+  if (img.dataset.fb) return; img.dataset.fb = 1;
+  var f = (img.getAttribute('src')||'').split('/').pop();
+  var alt = img.getAttribute('alt')||'';
+  var d = document.createElement('div'); d.className = 'cs-drop';
+  d.innerHTML = '<span class="t">Image</span><span class="d">' + f + (alt ? ' &middot; ' + alt : '') + '</span>';
+  img.replaceWith(d);
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="../index.html" class="brand">Riz Gosla</a>
+    <ul>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <article class="project-detail">
+    <a href="../index.html#projects" class="back-link">← Back to projects</a>
+
+    <div class="meta">
+      <span class="mono">2024–2025</span>
+      <span class="mono">Competitive Robotics</span>
+      <span class="version-badge mono">v3 — Current</span>
+    </div>
+
+    <h1>High Stakes Competition Robot</h1>
+    <p class="summary">A sub-18-inch VEX V5 competition robot, designed and built solo for the 2024–2025 <span class="serif">High Stakes</span> season — and the power take-off behind its climb.</p>
+
+    <div class="tags">
+      <span class="tag">VEX V5</span>
+      <span class="tag">Mechanism Design</span>
+      <span class="tag">Fabrication</span>
+    </div>
+  </article>
+
+  <!-- hero -->
+  <figure class="cs-fig">
+    <img src="../media/vrc-high-stakes/hero-robot-final.jpg" alt="Final v3 competition robot, three-quarter view." onerror="csImgFallback(this)">
+    <figcaption>The final v3 configuration: integrated wall-stake mechanism, PTO climb, and ring launcher.</figcaption>
+  </figure>
+
+  <!-- ===================== 01 OVERVIEW ===================== -->
+  <div class="project-body">
+    <span class="mono">01 — Overview</span>
+    <div>
+      <p class="lede">One robot, four unrelated jobs, and a fixed 88-watt budget to split between them.</p>
+      <p>A sub-18-inch VEX V5 competition robot, designed and built solo for the 2024–2025 <em>High Stakes</em> season. It scores rings on goals and stakes, scores on elevated wall stakes, and climbs a center ladder for endgame elevation, all within an 88-watt total motor budget. Its defining feature is a power take-off (PTO) that reuses the drive motors to power a winch climb, freeing motor budget for scoring instead of spending it on a dedicated climb system.</p>
+
+      <div class="cs-specs">
+        <div class="cs-spec"><div class="k">Power budget</div><div class="v">88<small> W</small></div></div>
+        <div class="cs-spec"><div class="k">Drive</div><div class="v">450<small> RPM</small></div></div>
+        <div class="cs-spec"><div class="k">Start volume</div><div class="v">18³<small> in</small></div></div>
+        <div class="cs-spec"><div class="k">Climb</div><div class="v">Tier 3</div></div>
+        <div class="cs-spec"><div class="k">Skills score</div><div class="v">57<small> 10th in region</small></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 02 PROBLEM ===================== -->
+  <div class="project-body">
+    <span class="mono">02 — Problem</span>
+    <div>
+      <p><em>High Stakes</em> rewards robots that can do several unrelated jobs well: collect and place rings, score on elevated wall stakes, manipulate mobile goals into scoring corners, and climb a ladder at the buzzer. The core engineering tension is that VEX caps total motor power at 88 W and starting size at 18 in³, so every motor spent on one capability is a motor not available for another.</p>
+      <p>The design problem was less "can I build a mechanism" and more "how do I allocate a fixed power and space budget across four competing subsystems without compromising any of them."</p>
+    </div>
+  </div>
+
+  <!-- ===================== 03 REQUIREMENTS ===================== -->
+  <div class="project-body">
+    <span class="mono">03 — Requirements</span>
+    <div>
+      <p>Separating the rules I was given from the targets I chose, and the numbers that fell out of those choices.</p>
+
+      <div class="cs-group is-constraint">
+        <div class="cs-group-label">Fixed constraints <small>from the game manual</small></div>
+        <table class="cs-table">
+          <thead><tr><th>Constraint</th><th>Limit</th></tr></thead>
+          <tbody>
+            <tr><td>Starting volume</td><td>18 × 18 × 18 in</td></tr>
+            <tr><td>Total motor power</td><td>88 W</td></tr>
+            <tr><td>Brains</td><td>1</td></tr>
+            <tr><td>Custom plastic</td><td>Must nest in one 12 × 24 in × 0.070 in non-shattering sheet</td></tr>
+            <tr><td>Pneumatics</td><td>2 tanks, 100 psi max</td></tr>
+            <tr><td>Possession</td><td>2 rings + 1 mobile goal at a time</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cs-group is-chosen">
+        <div class="cs-group-label">Chosen design targets <small>my decisions</small></div>
+        <table class="cs-table">
+          <thead><tr><th>Choice</th><th>Value</th><th>Rationale</th></tr></thead>
+          <tbody>
+            <tr><td>Drive speed</td><td>450 RPM</td><td>Balance of top speed vs. acceleration (decision-matrix winner over 350 / 600)</td></tr>
+            <tr><td>Wheel</td><td>3.25" omni</td><td>Best speed/torque trade for chassis weight</td></tr>
+            <tr><td>Climb method</td><td>PTO winch</td><td>Climb without dedicated motors, keeping power budget for scoring</td></tr>
+            <tr><td>Wall-stake arm</td><td>67 RPM, 1 motor</td><td>Fast scoring cadence, minimal power draw</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cs-group is-derived">
+        <div class="cs-group-label">Measured / derived outcomes <small>what the choices produced</small></div>
+        <table class="cs-table">
+          <thead><tr><th>Quantity</th><th>Result</th></tr></thead>
+          <tbody>
+            <tr><td>Driver skills score</td><td>41</td></tr>
+            <tr><td>Autonomous skills score</td><td>16</td></tr>
+            <tr><td>Combined skills</td><td>57 (10th in region)</td></tr>
+            <tr><td>Max theoretical score / attempt</td><td>44</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <figure class="cs-fig">
+        <img src="../media/vrc-high-stakes/spec-decision-matrix.jpg" alt="Weighted decision matrix from the engineering notebook." onerror="csImgFallback(this)">
+        <figcaption>A weighted decision matrix from the notebook: systematic selection, not preference.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- ===================== 04 DESIGN ===================== -->
+  <div class="project-body">
+    <span class="mono">04 — Design</span>
+    <div>
+      <p>I decomposed the build into independent subsystems and selected each with a weighted decision matrix rather than by preference. Chassis configuration, intake, scoring arm, mobile-goal clamp, and elevation were each scored against the criteria before I committed.</p>
+
+      <figure class="cs-fig">
+        <img src="../media/vrc-high-stakes/cad-full-robot.jpg" alt="Isometric CAD render of the complete robot." onerror="csImgFallback(this)">
+        <figcaption>Isometric CAD render of the complete robot.</figcaption>
+      </figure>
+
+      <div class="cs-decision">
+        <h4>Drivetrain — 450 RPM over 600 / 350</h4>
+        <div class="cs-row"><span class="cs-tag">Considered</span><span>350, 450, and 600 RPM, scored on acceleration and pushing power against gear and wheel ratios.</span></div>
+        <div class="cs-row is-chose"><span class="cs-tag">Chose</span><span>450 RPM on 3.25" omni wheels.</span></div>
+        <div class="cs-row"><span class="cs-tag">Because</span><span>600 RPM was faster but lost the pushing force needed to drive mobile goals into corners; 350 RPM was too slow for cycle time.</span></div>
+      </div>
+
+      <div class="cs-decision">
+        <h4>PTO climb — the signature decision</h4>
+        <div class="cs-row"><span class="cs-tag">Considered</span><span>A dedicated winch driven by its own motors, versus rerouting the drive motors.</span></div>
+        <div class="cs-row is-chose"><span class="cs-tag">Chose</span><span>A power take-off shifter (two metal spacers constrained by nylocks, a 12T metal pinion as the shift gear) that reroutes the drive motors to a two-stage winch for the Tier-3 climb.</span></div>
+        <div class="cs-row"><span class="cs-tag">Because</span><span>It buys back motor budget for scoring instead of spending it on climb.</span></div>
+        <div class="cs-row"><span class="cs-tag">Trade-off</span><span>The robot can't drive and climb at once, but climbing happens at the buzzer, so that cost is effectively free.</span></div>
+      </div>
+
+      <div class="cs-decision">
+        <h4>Intake → Lady Brown handoff</h4>
+        <div class="cs-row is-chose"><span class="cs-tag">Chose</span><span>A 600 RPM two-stage hook intake feeding a 67 RPM wall-stake arm that passes off rings for scoring.</span></div>
+        <div class="cs-row"><span class="cs-tag">Because</span><span>Designing the geometry so the handoff is reliable, rather than two separate manual operations, was the integration challenge.</span></div>
+      </div>
+
+      <div class="cs-decision">
+        <h4>Custom plastic for DFM</h4>
+        <div class="cs-row is-chose"><span class="cs-tag">Chose</span><span>All structural POM/Delrin plates CAD'd to nest within a single 12 × 24 in sheet.</span></div>
+        <div class="cs-row"><span class="cs-tag">Because</span><span>It satisfies the inspection rule while keeping the laser-cutter workflow to one cut file.</span></div>
+      </div>
+
+      <figure class="cs-fig">
+        <img src="../media/vrc-high-stakes/cad-pto-mechanism.jpg" alt="Close CAD render of the PTO shifter: 12T pinion, nylocks, and washer stack." onerror="csImgFallback(this)">
+        <figcaption>The PTO shifter — the signature mechanism — showing the 12T pinion, nylocks, and washer stack.</figcaption>
+      </figure>
+
+      <div class="cs-limit">
+        <span class="cs-label">Honest limitations</span>
+        The PTO adds mechanical complexity and a failure mode at the shifter; the single-motor wall-stake arm trades redundancy for power savings. Both were deliberate calls given the 88 W ceiling.
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 05 FABRICATION ===================== -->
+  <div class="project-body">
+    <span class="mono">05 — Fabrication</span>
+    <div>
+      <p>I laser-cut the structural plates from POM (Delrin) using nested 12 × 24 in drawing files generated from my CAD. The PTO shifter, the most complex assembly, used thin washers between nylocks to eliminate metal-on-metal friction around the 12T pinion.</p>
+      <p>A mid-season fabrication constraint drove a real material change. With no laser-cutter access over winter break, and with steel rail shafts proving too heavy on the ring launcher, I swapped to rounded aluminum standoffs as carriage rails: a lighter solution that preserved low friction.</p>
+
+      <div class="cs-fig-grid">
+        <figure class="cs-fig"><img src="../media/vrc-high-stakes/build-pto-plates.jpg" alt="Nested laser-cut POM plates on the sheet." onerror="csImgFallback(this)"><figcaption>Nested laser-cut POM plates: the whole structure off one cut file.</figcaption></figure>
+        <figure class="cs-fig"><img src="../media/vrc-high-stakes/build-assembly.jpg" alt="In-progress assembly of the robot." onerror="csImgFallback(this)"><figcaption>Mid-build assembly.</figcaption></figure>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 06 TESTING ===================== -->
+  <div class="project-body">
+    <span class="mono">06 — Testing</span>
+    <div>
+      <p>I validated the robot across four in-season tournaments, with each competition feeding the next iteration.</p>
+
+      <div class="cs-specs">
+        <div class="cs-spec"><div class="k">Driver skills</div><div class="v">41</div></div>
+        <div class="cs-spec"><div class="k">Auton skills</div><div class="v">16</div></div>
+        <div class="cs-spec"><div class="k">Combined</div><div class="v">57<small> 10th in region</small></div></div>
+        <div class="cs-spec"><div class="k">Score ceiling</div><div class="v">44<small> pts / attempt</small></div></div>
+      </div>
+
+      <p>Match data drove strategy refinement; the "screens" defensive play and corner-control offense were both validated through qualification matches.</p>
+
+      <div class="cs-callout">
+        <span class="cs-label">What testing surfaced</span>
+        The robot capped at 44 points per attempt, a design-driven ceiling that set the target for the next iteration. The recurring weakness was driver practice and autonomous programming time, not the hardware: the mechanisms outpaced match execution.
+      </div>
+
+      <figure class="cs-fig">
+        <img src="../media/vrc-high-stakes/test-skills-run.jpg" alt="The robot scoring during a skills run." onerror="csImgFallback(this)">
+        <figcaption>Scoring during a skills run.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- ===================== 07 ITERATIONS (revision log) ===================== -->
+  <div class="revision-log">
+    <div class="revision-log-head">
+      <span class="mono">07 — Iterations</span>
+      <h2>How it <span class="serif">evolved</span>.</h2>
+      <p style="font-size:1rem; color: var(--ink-soft); font-weight:300; margin-top:0.75rem; max-width: 52ch;">Each iteration was a competition-driven rebuild, not a tuning pass.</p>
+    </div>
+
+    <div class="revision-timeline">
+
+      <div class="revision-entry" data-status="current">
+        <div class="revision-marker"><div class="revision-dot"></div><div class="revision-line"></div></div>
+        <div class="revision-content">
+          <div class="revision-header">
+            <span class="revision-version mono">v3</span>
+            <span class="revision-status mono" data-status="current">Current</span>
+            <span class="mono revision-date">2025 · 03</span>
+          </div>
+          <h3 class="revision-title">Final integrated configuration</h3>
+          <p class="revision-desc">Integrated a dedicated wall-stake mechanism, refined the PTO elevation system, and added a single-use ring launcher to score the high stake during autonomous. Steel rails swapped to aluminum standoffs for weight.</p>
+          <ul class="revision-changes">
+            <li>Single-use ring launcher: 6-point bonus + autonomous-win-point contribution</li>
+            <li>Steel rails → rounded aluminum standoffs</li>
+            <li>Excellence Award (Stauffer, Feb) — top award at the event</li>
+          </ul>
+          <div class="revision-images">
+            <div class="revision-img-wrap"><img src="../media/vrc-high-stakes/iteration-v3.jpg" alt="Final config with ring launcher and integrated wall-stake mechanism." onerror="csImgFallback(this)"><div class="revision-img-caption"><span>v3 — ring launcher + wall stake</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="revision-entry" data-status="deprecated">
+        <div class="revision-marker"><div class="revision-dot"></div><div class="revision-line"></div></div>
+        <div class="revision-content">
+          <div class="revision-header">
+            <span class="revision-version mono">v2</span>
+            <span class="revision-status mono" data-status="deprecated">Superseded</span>
+            <span class="mono revision-date">2024 · 12 – 2025 · 02</span>
+          </div>
+          <h3 class="revision-title">Mid-season rebuild</h3>
+          <p class="revision-desc">Directly addressed v1's missing wall-stake capability and added endgame elevation without spending extra motors.</p>
+          <ul class="revision-changes">
+            <li>Added the 67 RPM "Lady Brown" wall-stake arm</li>
+            <li>Motor-stacked the 6-motor drive for space</li>
+            <li>Routed the PTO into a two-stage winch for a fast Tier-3 climb</li>
+          </ul>
+          <div class="revision-images">
+            <div class="revision-img-wrap"><img src="../media/vrc-high-stakes/iteration-v2.jpg" alt="Robot 2 after the rebuild, showing the Lady Brown arm." onerror="csImgFallback(this)"><div class="revision-img-caption"><span>v2 — Lady Brown arm added</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="revision-entry first" data-status="deprecated">
+        <div class="revision-marker"><div class="revision-dot"></div></div>
+        <div class="revision-content">
+          <div class="revision-header">
+            <span class="revision-version mono">v1</span>
+            <span class="revision-status mono" data-status="deprecated">Initial</span>
+            <span class="mono revision-date">2024 · 07 – 11</span>
+          </div>
+          <h3 class="revision-title">Initial competition build</h3>
+          <p class="revision-desc">PTO drivetrain, two-stage hook intake, scoring arm, and a pneumatic mobile-goal clamp. The design and notebook were strong, but the robot needed a wall-stake scorer as the metagame evolved.</p>
+          <ul class="revision-changes">
+            <li>450 RPM, 3.25" omni, H-frame drive with PTO</li>
+            <li>Design Award (Downey, Sept), Design Award (Legacy, Oct), Innovate Award (Downey, Nov)</li>
+            <li>Surfaced the gap: no wall-stake capability</li>
+          </ul>
+          <div class="revision-images">
+            <div class="revision-img-wrap"><img src="../media/vrc-high-stakes/iteration-v1.jpg" alt="Robot 1 as it competed, September to November." onerror="csImgFallback(this)"><div class="revision-img-caption"><span>v1 — initial build</span></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================== 08 OUTCOMES ===================== -->
+  <div class="project-body">
+    <span class="mono">08 — Outcomes</span>
+    <div>
+      <h2>Results</h2>
+      <ul>
+        <li>Excellence Award, plus 2× Design and 1× Innovate across the season.</li>
+        <li>57 combined skills score, 10th regionally.</li>
+        <li>A reusable PTO architecture that delivered climb capability at zero dedicated-motor cost.</li>
+      </ul>
+      <h2>What I'd do differently</h2>
+      <p>Budget driver-practice and autonomous-programming time as deliberately as motor power. The season's recurring bottleneck was execution time, not mechanism design.</p>
+    </div>
+  </div>
+
+</div><!-- /.container -->
+
+<div class="container">
+  <footer>
+    <span>© 2026 Riz Gosla</span>
+    <span>rizgosla.com</span>
+  </footer>
+</div>
+
+<!-- LIGHTBOX — handles .cs-fig, .gallery-item, and .revision-img-wrap -->
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" aria-label="Close">✕</button>
+  <button class="lightbox-nav lightbox-prev" aria-label="Previous">‹</button>
+  <button class="lightbox-nav lightbox-next" aria-label="Next">›</button>
+  <img src="" alt="">
+  <div class="lightbox-caption"></div>
+</div>
+
+<script>
+(function() {
+  const overlay = document.getElementById('lightbox');
+  const lbImg = overlay.querySelector('img');
+  const lbCap = overlay.querySelector('.lightbox-caption');
+  const SEL = '.cs-fig, .gallery-item, .revision-img-wrap';
+  function items() { return [...document.querySelectorAll(SEL)].filter(el => el.querySelector('img')); }
+  let list = [], cur = 0;
+  function capFor(item) {
+    const c = item.querySelector('figcaption, .gallery-caption span, .revision-img-caption span');
+    return c ? c.textContent.trim() : (item.querySelector('img').alt || '');
+  }
+  function show(i) {
+    cur = (i + list.length) % list.length;
+    const im = list[cur].querySelector('img');
+    lbImg.src = im.src; lbImg.alt = im.alt; lbCap.textContent = capFor(list[cur]);
+    overlay.classList.add('active'); document.body.style.overflow = 'hidden';
+  }
+  function hide() { overlay.classList.remove('active'); document.body.style.overflow = ''; }
+  document.addEventListener('click', e => {
+    const it = e.target.closest(SEL);
+    if (it && it.querySelector('img') && !e.target.closest('a')) {
+      list = items(); const idx = list.indexOf(it); if (idx >= 0) show(idx);
+    }
+  });
+  overlay.addEventListener('click', e => { if (e.target === overlay || e.target === lbImg) hide(); });
+  overlay.querySelector('.lightbox-close').addEventListener('click', hide);
+  overlay.querySelector('.lightbox-prev').addEventListener('click', e => { e.stopPropagation(); show(cur - 1); });
+  overlay.querySelector('.lightbox-next').addEventListener('click', e => { e.stopPropagation(); show(cur + 1); });
+  document.addEventListener('keydown', e => {
+    if (!overlay.classList.contains('active')) return;
+    if (e.key === 'Escape') hide();
+    if (e.key === 'ArrowLeft') show(cur - 1);
+    if (e.key === 'ArrowRight') show(cur + 1);
+  });
+})();
+</script>
+
+</body>
+</html>
