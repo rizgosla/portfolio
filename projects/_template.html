@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <!-- ==========================================================================
-     PROJECT PAGE TEMPLATE — with Gallery & Revision Log
+     PROJECT PAGE TEMPLATE — case-study format
      ==========================================================================
      HOW TO USE:
      1. Duplicate this file inside /projects/. Rename it (lowercase, dashes).
      2. Update the <title> tag and all [bracketed placeholders].
-     3. Add images to the gallery section (see comments below).
-     4. Fill in the Revision Log — document your iteration process.
+     3. Add your images to ../media/[project-name]/ and update src paths.
+     4. Fill in each numbered section; delete or add sections as needed.
      5. Add a matching project card to index.html.
      ========================================================================== -->
 <html lang="en">
@@ -14,10 +14,22 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>[Project Title] — Riz Gosla</title>
+<meta name="description" content="[One-sentence description for search engines.]" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
+<script>
+/* show the filename to upload if an image isn't there yet */
+function csImgFallback(img){
+  if (img.dataset.fb) return; img.dataset.fb = 1;
+  var f = (img.getAttribute('src')||'').split('/').pop();
+  var alt = img.getAttribute('alt')||'';
+  var d = document.createElement('div'); d.className = 'cs-drop';
+  d.innerHTML = '<span class="t">Image</span><span class="d">' + f + (alt ? ' &middot; ' + alt : '') + '</span>';
+  img.replaceWith(d);
+}
+</script>
 </head>
 <body>
 
@@ -39,13 +51,13 @@
     <a href="../index.html#projects" class="back-link">← Back to projects</a>
 
     <div class="meta">
-      <span class="mono">[Year]</span>
+      <span class="mono">[Year or Year Range]</span>
       <span class="mono">[Category — e.g. Mechanical Design]</span>
-      <span class="version-badge mono">v[X.X] — Current</span>
+      <span class="version-badge mono">v[X] — Current</span>
     </div>
 
     <h1>[Project Title]</h1>
-    <p class="summary">[One- or two-sentence summary.]</p>
+    <p class="summary">[One- or two-sentence summary of what this is and what makes it interesting.]</p>
 
     <div class="tags">
       <span class="tag">Tool / Skill</span>
@@ -54,156 +66,212 @@
     </div>
   </article>
 
-  <!-- ======================================================================
-       IMAGE GALLERY
-       - The first item has class="wide" — it spans full width as a hero image.
-       - All other items sit in a 2-column grid below it.
-       - Clicking any image opens the lightbox. Captions appear on hover.
-       - Add or remove .gallery-item blocks as needed.
-       - Images live in projects/images/. Example: src="images/my-photo.jpg"
-       ====================================================================== -->
-  <div class="project-gallery">
-    <div class="project-gallery-head">
-      <span class="mono">Gallery</span>
-      <h2>Build <span class="serif">photos</span>.</h2>
-    </div>
-    <div class="gallery-grid">
+  <!-- hero image -->
+  <figure class="cs-fig">
+    <img src="../media/[project-name]/hero.jpg" alt="[Hero image description.]" onerror="csImgFallback(this)">
+    <figcaption>[Hero caption — what is shown and why it matters.]</figcaption>
+  </figure>
 
-      <div class="gallery-item wide">
-        <img src="images/[hero-image].jpg" alt="[description]">
-        <div class="gallery-caption"><span>[Caption]</span></div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="images/[image-2].jpg" alt="[description]">
-        <div class="gallery-caption"><span>[Caption]</span></div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="images/[image-3].jpg" alt="[description]">
-        <div class="gallery-caption"><span>[Caption]</span></div>
-      </div>
-
-      <!-- Duplicate the block above to add more images -->
-
-    </div>
-  </div>
-
-  <!-- ======================================================================
-       WRITEUP
-       Use <h2> for section headings, <p> for paragraphs, <ul> for lists.
-       ====================================================================== -->
+  <!-- ===================== 01 OVERVIEW ===================== -->
   <div class="project-body">
-    <span class="mono">Writeup</span>
+    <span class="mono">01 — Overview</span>
     <div>
-      <h2>Overview</h2>
-      <p>[What is this project? Why did you build it?]</p>
+      <p class="lede">[One punchy sentence that frames the whole project.]</p>
+      <p>[Expanded overview: what it is, what problem it solves, what makes it interesting.]</p>
 
-      <h2>Approach</h2>
-      <p>[Key decisions and interesting parts.]</p>
-      <ul>
-        <li>[Key decision one]</li>
-        <li>[Key decision two]</li>
-        <li>[Key decision three]</li>
-      </ul>
-
-      <h2>Results</h2>
-      <p>[What worked, what didn't, what would you change?]</p>
-
-      <h2>What I learned</h2>
-      <p>[Honest takeaway.]</p>
+      <!-- Key specs — delete if not applicable -->
+      <div class="cs-specs">
+        <div class="cs-spec"><div class="k">[Metric]</div><div class="v">[Value]<small> [unit]</small></div></div>
+        <div class="cs-spec"><div class="k">[Metric]</div><div class="v">[Value]</div></div>
+        <div class="cs-spec"><div class="k">[Metric]</div><div class="v">[Value]</div></div>
+        <div class="cs-spec"><div class="k">[Metric]</div><div class="v">[Value]</div></div>
+      </div>
     </div>
   </div>
 
-  <!-- ======================================================================
-       REVISION LOG
-       - Newest version at the top, oldest at the bottom.
-       - The bottom-most entry should have class="revision-entry first".
-       - data-status options: current | in-progress | deprecated
-       - Images are optional — remove the revision-images block if you
-         don't have photos for a particular version yet.
-       ====================================================================== -->
+  <!-- ===================== 02 PROBLEM ===================== -->
+  <div class="project-body">
+    <span class="mono">02 — Problem</span>
+    <div>
+      <p>[What was the core challenge? What made it non-trivial?]</p>
+      <p>[What was the real engineering tension — the trade-off that the whole design had to navigate?]</p>
+    </div>
+  </div>
+
+  <!-- ===================== 03 REQUIREMENTS ===================== -->
+  <div class="project-body">
+    <span class="mono">03 — Requirements</span>
+    <div>
+      <p>[Brief intro separating given constraints from your own design choices.]</p>
+
+      <!-- Fixed constraints (given to you) -->
+      <div class="cs-group is-constraint">
+        <div class="cs-group-label">Fixed constraints <small>[source, e.g. from the spec]</small></div>
+        <table class="cs-table">
+          <thead><tr><th>Constraint</th><th>Limit</th></tr></thead>
+          <tbody>
+            <tr><td>[Constraint]</td><td>[Value]</td></tr>
+            <tr><td>[Constraint]</td><td>[Value]</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chosen design targets (your decisions) -->
+      <div class="cs-group is-chosen">
+        <div class="cs-group-label">Chosen design targets <small>my decisions</small></div>
+        <table class="cs-table">
+          <thead><tr><th>Choice</th><th>Value</th><th>Rationale</th></tr></thead>
+          <tbody>
+            <tr><td>[Choice]</td><td>[Value]</td><td>[Why]</td></tr>
+            <tr><td>[Choice]</td><td>[Value]</td><td>[Why]</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Measured outcomes -->
+      <div class="cs-group is-derived">
+        <div class="cs-group-label">Measured / derived outcomes <small>what the choices produced</small></div>
+        <table class="cs-table">
+          <thead><tr><th>Quantity</th><th>Result</th></tr></thead>
+          <tbody>
+            <tr><td>[Quantity]</td><td>[Result]</td></tr>
+            <tr><td>[Quantity]</td><td>[Result]</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 04 DESIGN ===================== -->
+  <div class="project-body">
+    <span class="mono">04 — Design</span>
+    <div>
+      <p>[How did you approach the design? What framework or process drove decisions?]</p>
+
+      <figure class="cs-fig">
+        <img src="../media/[project-name]/cad-overview.jpg" alt="[CAD or design image description.]" onerror="csImgFallback(this)">
+        <figcaption>[Caption.]</figcaption>
+      </figure>
+
+      <!-- Repeat cs-decision blocks for each key design decision -->
+      <div class="cs-decision">
+        <h4>[Decision title]</h4>
+        <div class="cs-row"><span class="cs-tag">Considered</span><span>[Options evaluated.]</span></div>
+        <div class="cs-row is-chose"><span class="cs-tag">Chose</span><span>[What you chose.]</span></div>
+        <div class="cs-row"><span class="cs-tag">Because</span><span>[The reasoning.]</span></div>
+      </div>
+
+      <div class="cs-decision">
+        <h4>[Decision title]</h4>
+        <div class="cs-row"><span class="cs-tag">Considered</span><span>[Options evaluated.]</span></div>
+        <div class="cs-row is-chose"><span class="cs-tag">Chose</span><span>[What you chose.]</span></div>
+        <div class="cs-row"><span class="cs-tag">Because</span><span>[The reasoning.]</span></div>
+        <div class="cs-row"><span class="cs-tag">Trade-off</span><span>[What you gave up.]</span></div>
+      </div>
+
+      <!-- Honest limitations callout -->
+      <div class="cs-limit">
+        <span class="cs-label">Honest limitations</span>
+        [What are the known weaknesses or deliberate trade-offs in this design?]
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 05 BUILD / FABRICATION ===================== -->
+  <div class="project-body">
+    <span class="mono">05 — Build</span>
+    <div>
+      <p>[How was it built? Notable fabrication or implementation details.]</p>
+      <p>[Any mid-build changes or surprises that shaped the final result.]</p>
+
+      <!-- Side-by-side figures — delete if not needed -->
+      <div class="cs-fig-grid">
+        <figure class="cs-fig"><img src="../media/[project-name]/build-1.jpg" alt="[description]" onerror="csImgFallback(this)"><figcaption>[Caption.]</figcaption></figure>
+        <figure class="cs-fig"><img src="../media/[project-name]/build-2.jpg" alt="[description]" onerror="csImgFallback(this)"><figcaption>[Caption.]</figcaption></figure>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 06 TESTING ===================== -->
+  <div class="project-body">
+    <span class="mono">06 — Testing</span>
+    <div>
+      <p>[How did you validate it? What did you measure?]</p>
+
+      <div class="cs-specs">
+        <div class="cs-spec"><div class="k">[Metric]</div><div class="v">[Value]</div></div>
+        <div class="cs-spec"><div class="k">[Metric]</div><div class="v">[Value]</div></div>
+        <div class="cs-spec"><div class="k">[Metric]</div><div class="v">[Value]</div></div>
+      </div>
+
+      <div class="cs-callout">
+        <span class="cs-label">What testing surfaced</span>
+        [What did you learn from testing that changed or confirmed your design?]
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 07 ITERATIONS (revision log) ===================== -->
   <div class="revision-log">
     <div class="revision-log-head">
-      <span class="mono">Revision Log</span>
+      <span class="mono">07 — Iterations</span>
       <h2>How it <span class="serif">evolved</span>.</h2>
-      <p style="font-size:1rem; color: var(--ink-soft); font-weight:300; margin-top:0.75rem; max-width: 52ch;">A version-by-version record of what changed and why. Updated as the design develops.</p>
+      <p style="font-size:1rem; color: var(--ink-soft); font-weight:300; margin-top:0.75rem; max-width: 52ch;">[One sentence on the nature of the iteration — e.g. "Each version was driven by a specific failure or new requirement."]</p>
     </div>
 
     <div class="revision-timeline">
 
       <!-- CURRENT VERSION ================================================= -->
       <div class="revision-entry" data-status="current">
-        <div class="revision-marker">
-          <div class="revision-dot"></div>
-          <div class="revision-line"></div>
-        </div>
+        <div class="revision-marker"><div class="revision-dot"></div><div class="revision-line"></div></div>
         <div class="revision-content">
           <div class="revision-header">
-            <span class="revision-version mono">v[X.X]</span>
+            <span class="revision-version mono">v[X]</span>
             <span class="revision-status mono" data-status="current">Current</span>
-            <span class="mono revision-date">[YYYY · MM · DD]</span>
+            <span class="mono revision-date">[YYYY · MM]</span>
           </div>
           <h3 class="revision-title">[Version title]</h3>
-          <p class="revision-desc">[What changed and why?]</p>
+          <p class="revision-desc">[What changed and why.]</p>
           <ul class="revision-changes">
             <li>[Change]</li>
             <li>[Change]</li>
             <li>[Change]</li>
           </ul>
-          <!-- Optional: remove this block if you have no images for this version -->
           <div class="revision-images">
-            <div class="revision-img-wrap">
-              <img src="images/[version-image-1].jpg" alt="[description]">
-              <div class="revision-img-caption"><span>[Caption]</span></div>
-            </div>
-            <div class="revision-img-wrap">
-              <img src="images/[version-image-2].jpg" alt="[description]">
-              <div class="revision-img-caption"><span>[Caption]</span></div>
-            </div>
-            <!-- Add more revision-img-wrap blocks as needed -->
+            <div class="revision-img-wrap"><img src="../media/[project-name]/iteration-v[X].jpg" alt="[description]" onerror="csImgFallback(this)"><div class="revision-img-caption"><span>[Caption]</span></div></div>
           </div>
         </div>
       </div>
 
       <!-- OLDER VERSION — duplicate this block for each previous version === -->
       <div class="revision-entry" data-status="deprecated">
-        <div class="revision-marker">
-          <div class="revision-dot"></div>
-          <div class="revision-line"></div>
-        </div>
+        <div class="revision-marker"><div class="revision-dot"></div><div class="revision-line"></div></div>
         <div class="revision-content">
           <div class="revision-header">
-            <span class="revision-version mono">v[X.X]</span>
+            <span class="revision-version mono">v[X]</span>
             <span class="revision-status mono" data-status="deprecated">Superseded</span>
-            <span class="mono revision-date">[YYYY · MM · DD]</span>
+            <span class="mono revision-date">[YYYY · MM]</span>
           </div>
           <h3 class="revision-title">[Version title]</h3>
-          <p class="revision-desc">[What changed and why?]</p>
+          <p class="revision-desc">[What changed and why.]</p>
           <ul class="revision-changes">
             <li>[Change]</li>
             <li>[Change]</li>
           </ul>
           <div class="revision-images">
-            <div class="revision-img-wrap">
-              <img src="images/[version-image].jpg" alt="[description]">
-              <div class="revision-img-caption"><span>[Caption]</span></div>
-            </div>
+            <div class="revision-img-wrap"><img src="../media/[project-name]/iteration-v[X-1].jpg" alt="[description]" onerror="csImgFallback(this)"><div class="revision-img-caption"><span>[Caption]</span></div></div>
           </div>
         </div>
       </div>
 
       <!-- INITIAL VERSION — always keep class="first" on the oldest entry = -->
       <div class="revision-entry first" data-status="deprecated">
-        <div class="revision-marker">
-          <div class="revision-dot"></div>
-          <!-- No revision-line on the last entry -->
-        </div>
+        <div class="revision-marker"><div class="revision-dot"></div></div>
         <div class="revision-content">
           <div class="revision-header">
-            <span class="revision-version mono">v1.0</span>
+            <span class="revision-version mono">v1</span>
             <span class="revision-status mono" data-status="deprecated">Initial</span>
-            <span class="mono revision-date">[YYYY · MM · DD]</span>
+            <span class="mono revision-date">[YYYY · MM]</span>
           </div>
           <h3 class="revision-title">[First attempt]</h3>
           <p class="revision-desc">[Starting point and assumptions.]</p>
@@ -212,16 +280,28 @@
             <li>[What it was missing]</li>
           </ul>
           <div class="revision-images">
-            <div class="revision-img-wrap">
-              <img src="images/[v1-image].jpg" alt="[description]">
-              <div class="revision-img-caption"><span>[Caption]</span></div>
-            </div>
+            <div class="revision-img-wrap"><img src="../media/[project-name]/iteration-v1.jpg" alt="[description]" onerror="csImgFallback(this)"><div class="revision-img-caption"><span>[Caption]</span></div></div>
           </div>
         </div>
       </div>
 
-    </div><!-- /.revision-timeline -->
-  </div><!-- /.revision-log -->
+    </div>
+  </div>
+
+  <!-- ===================== 08 OUTCOMES ===================== -->
+  <div class="project-body">
+    <span class="mono">08 — Outcomes</span>
+    <div>
+      <h2>Results</h2>
+      <ul>
+        <li>[Key result]</li>
+        <li>[Key result]</li>
+        <li>[Key result]</li>
+      </ul>
+      <h2>What I'd do differently</h2>
+      <p>[Honest retrospective — what would you change if you started over?]</p>
+    </div>
+  </div>
 
 </div><!-- /.container -->
 
@@ -232,10 +312,7 @@
   </footer>
 </div>
 
-<!-- ======================================================================
-     LIGHTBOX — handles all .gallery-item AND .revision-img-wrap clicks.
-     No changes needed here when you add more images.
-     ====================================================================== -->
+<!-- LIGHTBOX — handles .cs-fig, .gallery-item, and .revision-img-wrap -->
 <div class="lightbox-overlay" id="lightbox">
   <button class="lightbox-close" aria-label="Close">✕</button>
   <button class="lightbox-nav lightbox-prev" aria-label="Previous">‹</button>
@@ -249,42 +326,35 @@
   const overlay = document.getElementById('lightbox');
   const lbImg = overlay.querySelector('img');
   const lbCap = overlay.querySelector('.lightbox-caption');
-
-  const items = [...document.querySelectorAll('.gallery-item, .revision-img-wrap')];
-  let current = 0;
-
-  function show(idx) {
-    current = idx;
-    const item = items[idx];
-    const img = item.querySelector('img');
-    const cap = item.querySelector('.gallery-caption span, .revision-img-caption span');
-    lbImg.src = img.src;
-    lbImg.alt = img.alt;
-    lbCap.textContent = cap ? cap.textContent : '';
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
+  const SEL = '.cs-fig, .gallery-item, .revision-img-wrap';
+  function items() { return [...document.querySelectorAll(SEL)].filter(el => el.querySelector('img')); }
+  let list = [], cur = 0;
+  function capFor(item) {
+    const c = item.querySelector('figcaption, .gallery-caption span, .revision-img-caption span');
+    return c ? c.textContent.trim() : (item.querySelector('img').alt || '');
   }
-
-  function hide() {
-    overlay.classList.remove('active');
-    document.body.style.overflow = '';
+  function show(i) {
+    cur = (i + list.length) % list.length;
+    const im = list[cur].querySelector('img');
+    lbImg.src = im.src; lbImg.alt = im.alt; lbCap.textContent = capFor(list[cur]);
+    overlay.classList.add('active'); document.body.style.overflow = 'hidden';
   }
-
-  function next() { show((current + 1) % items.length); }
-  function prev() { show((current - 1 + items.length) % items.length); }
-
-  items.forEach((item, i) => item.addEventListener('click', () => show(i)));
-
+  function hide() { overlay.classList.remove('active'); document.body.style.overflow = ''; }
+  document.addEventListener('click', e => {
+    const it = e.target.closest(SEL);
+    if (it && it.querySelector('img') && !e.target.closest('a')) {
+      list = items(); const idx = list.indexOf(it); if (idx >= 0) show(idx);
+    }
+  });
   overlay.addEventListener('click', e => { if (e.target === overlay || e.target === lbImg) hide(); });
   overlay.querySelector('.lightbox-close').addEventListener('click', hide);
-  overlay.querySelector('.lightbox-prev').addEventListener('click', e => { e.stopPropagation(); prev(); });
-  overlay.querySelector('.lightbox-next').addEventListener('click', e => { e.stopPropagation(); next(); });
-
+  overlay.querySelector('.lightbox-prev').addEventListener('click', e => { e.stopPropagation(); show(cur - 1); });
+  overlay.querySelector('.lightbox-next').addEventListener('click', e => { e.stopPropagation(); show(cur + 1); });
   document.addEventListener('keydown', e => {
     if (!overlay.classList.contains('active')) return;
     if (e.key === 'Escape') hide();
-    if (e.key === 'ArrowRight') next();
-    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowLeft') show(cur - 1);
+    if (e.key === 'ArrowRight') show(cur + 1);
   });
 })();
 </script>
