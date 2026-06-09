@@ -4,9 +4,10 @@
      ==========================================================================
      HOW TO USE:
      1. Duplicate this file inside /projects/. Rename it (lowercase, dashes).
-     2. Update the <title> tag and all [bracketed placeholders].
-     3. Add your images to ../media/[project-name]/ and update src paths.
-     4. Fill in each numbered section; delete or add sections as needed.
+     2. Replace all example content below with your own project details.
+     3. Put images in ../media/[project-name]/ and update src paths.
+     4. Adjust or delete sections that don't apply (e.g. remove 05 — Build
+        for a software project, or collapse 03 if constraints are minimal).
      5. Add a matching project card to index.html.
      ========================================================================== -->
 <html lang="en">
@@ -14,7 +15,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>[Project Title] — Riz Gosla</title>
-<meta name="description" content="[One-sentence description for search engines.]" />
+<meta name="description" content="[One sentence for search engines — what it is and what it does.]" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -51,40 +52,40 @@ function csImgFallback(img){
     <a href="../index.html#projects" class="back-link">← Back to projects</a>
 
     <div class="meta">
-      <span class="mono">[Year or Year Range]</span>
-      <span class="mono">[Category — e.g. Mechanical Design]</span>
-      <span class="version-badge mono">v[X] — Current</span>
+      <span class="mono">2024–2025</span>
+      <span class="mono">Mechanical Design</span>
+      <span class="version-badge mono">v3 — Current</span>
     </div>
 
     <h1>[Project Title]</h1>
-    <p class="summary">[One- or two-sentence summary of what this is and what makes it interesting.]</p>
+    <p class="summary">A [brief description of what it is] designed to [what it does], built for [context — competition / personal project / coursework]. Its defining feature is [the one thing that makes it interesting].</p>
 
     <div class="tags">
-      <span class="tag">Tool / Skill</span>
-      <span class="tag">Tool / Skill</span>
-      <span class="tag">Tool / Skill</span>
+      <span class="tag">Onshape</span>
+      <span class="tag">Mechanism Design</span>
+      <span class="tag">Fabrication</span>
     </div>
   </article>
 
   <!-- hero image -->
   <figure class="cs-fig">
-    <img src="../media/[project-name]/hero.jpg" alt="[Hero image description.]" onerror="csImgFallback(this)">
-    <figcaption>[Hero caption — what is shown and why it matters.]</figcaption>
+    <img src="../media/[project-name]/hero.jpg" alt="Final version, three-quarter view." onerror="csImgFallback(this)">
+    <figcaption>The final v3 configuration: [describe what's shown and why this shot was chosen].</figcaption>
   </figure>
 
   <!-- ===================== 01 OVERVIEW ===================== -->
   <div class="project-body">
     <span class="mono">01 — Overview</span>
     <div>
-      <p class="lede">[One punchy sentence that frames the whole project.]</p>
-      <p>[Expanded overview: what it is, what problem it solves, what makes it interesting.]</p>
+      <!-- The lede is a single punchy sentence — the engineering tension in one line. -->
+      <p class="lede">[One sentence that captures the core tension or challenge — e.g. "One mechanism, three competing jobs, and a fixed 12-watt power budget to split between them."]</p>
+      <p>[Expand the lede. Name what the project is, what it does, who it was built for, and what the defining design choice was. Keep it to one paragraph. Be specific — name the mechanism, the constraint, the technique.]</p>
 
-      <!-- Key specs — delete if not applicable -->
       <div class="cs-specs">
-        <div class="cs-spec"><div class="k">[Metric]</div><div class="v">[Value]<small> [unit]</small></div></div>
-        <div class="cs-spec"><div class="k">[Metric]</div><div class="v">[Value]</div></div>
-        <div class="cs-spec"><div class="k">[Metric]</div><div class="v">[Value]</div></div>
-        <div class="cs-spec"><div class="k">[Metric]</div><div class="v">[Value]</div></div>
+        <div class="cs-spec"><div class="k">[Key metric]</div><div class="v">[Value]<small> [unit]</small></div></div>
+        <div class="cs-spec"><div class="k">[Key metric]</div><div class="v">[Value]</div></div>
+        <div class="cs-spec"><div class="k">[Key metric]</div><div class="v">[Value]<small> [context]</small></div></div>
+        <div class="cs-spec"><div class="k">[Key metric]</div><div class="v">[Value]</div></div>
       </div>
     </div>
   </div>
@@ -93,8 +94,11 @@ function csImgFallback(img){
   <div class="project-body">
     <span class="mono">02 — Problem</span>
     <div>
-      <p>[What was the core challenge? What made it non-trivial?]</p>
-      <p>[What was the real engineering tension — the trade-off that the whole design had to navigate?]</p>
+      <!-- First paragraph: what is the context? What does the system need to do?
+           Be specific. Name the game/task/brief. -->
+      <p>[Context paragraph: what is the domain, what does the system need to accomplish? Name specific requirements from the brief — scoring mechanisms, cycle times, weight limits, whatever applies.]</p>
+      <!-- Second paragraph: reframe the problem as an engineering tension, not a task list. -->
+      <p>The design problem was less "[obvious framing]" and more "[the real underlying trade-off — e.g. "how do I allocate a fixed power budget across four competing subsystems without shortchanging any of them."]"</p>
     </div>
   </div>
 
@@ -102,43 +106,52 @@ function csImgFallback(img){
   <div class="project-body">
     <span class="mono">03 — Requirements</span>
     <div>
-      <p>[Brief intro separating given constraints from your own design choices.]</p>
+      <!-- One sentence separating what you were given from what you chose. -->
+      <p>Separating the [spec / rules / brief] I was given from the targets I chose, and the numbers that fell out of those choices.</p>
 
-      <!-- Fixed constraints (given to you) -->
+      <!-- Fixed constraints — things you had no control over. -->
       <div class="cs-group is-constraint">
-        <div class="cs-group-label">Fixed constraints <small>[source, e.g. from the spec]</small></div>
+        <div class="cs-group-label">Fixed constraints <small>from [the spec / game manual / client brief]</small></div>
         <table class="cs-table">
           <thead><tr><th>Constraint</th><th>Limit</th></tr></thead>
           <tbody>
-            <tr><td>[Constraint]</td><td>[Value]</td></tr>
-            <tr><td>[Constraint]</td><td>[Value]</td></tr>
+            <tr><td>[Constraint name]</td><td>[Hard limit or value]</td></tr>
+            <tr><td>[Constraint name]</td><td>[Hard limit or value]</td></tr>
+            <tr><td>[Constraint name]</td><td>[Hard limit or value]</td></tr>
           </tbody>
         </table>
       </div>
 
-      <!-- Chosen design targets (your decisions) -->
+      <!-- Chosen targets — your deliberate design decisions and why. -->
       <div class="cs-group is-chosen">
         <div class="cs-group-label">Chosen design targets <small>my decisions</small></div>
         <table class="cs-table">
           <thead><tr><th>Choice</th><th>Value</th><th>Rationale</th></tr></thead>
           <tbody>
-            <tr><td>[Choice]</td><td>[Value]</td><td>[Why]</td></tr>
-            <tr><td>[Choice]</td><td>[Value]</td><td>[Why]</td></tr>
+            <tr><td>[Choice name]</td><td>[Value]</td><td>[Why this value — what you were optimizing for, what you traded away]</td></tr>
+            <tr><td>[Choice name]</td><td>[Value]</td><td>[Rationale]</td></tr>
+            <tr><td>[Choice name]</td><td>[Value]</td><td>[Rationale]</td></tr>
           </tbody>
         </table>
       </div>
 
-      <!-- Measured outcomes -->
+      <!-- Derived outcomes — what the above choices actually produced. -->
       <div class="cs-group is-derived">
         <div class="cs-group-label">Measured / derived outcomes <small>what the choices produced</small></div>
         <table class="cs-table">
           <thead><tr><th>Quantity</th><th>Result</th></tr></thead>
           <tbody>
-            <tr><td>[Quantity]</td><td>[Result]</td></tr>
-            <tr><td>[Quantity]</td><td>[Result]</td></tr>
+            <tr><td>[Measured quantity]</td><td>[Result]</td></tr>
+            <tr><td>[Measured quantity]</td><td>[Result]</td></tr>
+            <tr><td>[Measured quantity]</td><td>[Result]</td></tr>
           </tbody>
         </table>
       </div>
+
+      <figure class="cs-fig">
+        <img src="../media/[project-name]/requirements-diagram.jpg" alt="[Description of the image — e.g. weighted decision matrix from the notebook]." onerror="csImgFallback(this)">
+        <figcaption>[Caption — describe what's shown and why it mattered to the decision process].</figcaption>
+      </figure>
     </div>
   </div>
 
@@ -146,48 +159,64 @@ function csImgFallback(img){
   <div class="project-body">
     <span class="mono">04 — Design</span>
     <div>
-      <p>[How did you approach the design? What framework or process drove decisions?]</p>
+      <!-- How did you approach decomposing the problem? What framework drove decisions? -->
+      <p>I decomposed the [system] into [N] independent subsystems and selected each with a [weighted decision matrix / first-principles analysis / prototype comparison] rather than by preference. [List the subsystems briefly — e.g. "Chassis, intake, scoring arm, and elevation were each evaluated against the key criteria before I committed."]</p>
 
       <figure class="cs-fig">
-        <img src="../media/[project-name]/cad-overview.jpg" alt="[CAD or design image description.]" onerror="csImgFallback(this)">
-        <figcaption>[Caption.]</figcaption>
+        <img src="../media/[project-name]/cad-overview.jpg" alt="[Isometric CAD / system diagram / schematic]." onerror="csImgFallback(this)">
+        <figcaption>[Caption for the overview image — what it shows and why this view was chosen].</figcaption>
       </figure>
 
-      <!-- Repeat cs-decision blocks for each key design decision -->
+      <!-- One cs-decision block per significant design decision.
+           Title: "[Subsystem] — [Chosen option] over [Rejected option]"
+           Keep "Considered" concrete: name the actual options evaluated.
+           Keep "Because" honest: name the specific failure mode or trade you were avoiding. -->
       <div class="cs-decision">
-        <h4>[Decision title]</h4>
-        <div class="cs-row"><span class="cs-tag">Considered</span><span>[Options evaluated.]</span></div>
-        <div class="cs-row is-chose"><span class="cs-tag">Chose</span><span>[What you chose.]</span></div>
-        <div class="cs-row"><span class="cs-tag">Because</span><span>[The reasoning.]</span></div>
+        <h4>[Subsystem] — [chosen option] over [rejected option(s)]</h4>
+        <div class="cs-row"><span class="cs-tag">Considered</span><span>[Name the actual options evaluated and what each scored on — e.g. three gear ratios, two motor placements, etc.]</span></div>
+        <div class="cs-row is-chose"><span class="cs-tag">Chose</span><span>[Specific configuration: name the part numbers, dimensions, or parameters.]</span></div>
+        <div class="cs-row"><span class="cs-tag">Because</span><span>[Specific reason — not "it was better" but the exact failure mode or trade it avoided. E.g. "600 RPM was faster but lost the pushing force needed to drive goals into corners."]</span></div>
       </div>
 
       <div class="cs-decision">
-        <h4>[Decision title]</h4>
-        <div class="cs-row"><span class="cs-tag">Considered</span><span>[Options evaluated.]</span></div>
-        <div class="cs-row is-chose"><span class="cs-tag">Chose</span><span>[What you chose.]</span></div>
-        <div class="cs-row"><span class="cs-tag">Because</span><span>[The reasoning.]</span></div>
-        <div class="cs-row"><span class="cs-tag">Trade-off</span><span>[What you gave up.]</span></div>
+        <h4>[Subsystem] — the signature decision</h4>
+        <div class="cs-row"><span class="cs-tag">Considered</span><span>[Options and their trade-offs.]</span></div>
+        <div class="cs-row is-chose"><span class="cs-tag">Chose</span><span>[What you chose, with enough detail that someone could build it — name the mechanism, the components, the configuration.]</span></div>
+        <div class="cs-row"><span class="cs-tag">Because</span><span>[The specific gain — what budget, capability, or constraint it freed up.]</span></div>
+        <div class="cs-row"><span class="cs-tag">Trade-off</span><span>[What you gave up, and why that cost was acceptable in context.]</span></div>
       </div>
 
-      <!-- Honest limitations callout -->
+      <div class="cs-decision">
+        <h4>[Subsystem]</h4>
+        <div class="cs-row is-chose"><span class="cs-tag">Chose</span><span>[What you chose and its key parameter.]</span></div>
+        <div class="cs-row"><span class="cs-tag">Because</span><span>[The integration challenge it solved — e.g. geometry, interface, tolerance.]</span></div>
+      </div>
+
+      <figure class="cs-fig">
+        <img src="../media/[project-name]/cad-detail.jpg" alt="[Detail view of the key mechanism]." onerror="csImgFallback(this)">
+        <figcaption>The [mechanism name] — showing [the specific feature that makes it work].</figcaption>
+      </figure>
+
+      <!-- Honest limitations: name the deliberate trade-offs, not just what you'd fix with more time. -->
       <div class="cs-limit">
         <span class="cs-label">Honest limitations</span>
-        [What are the known weaknesses or deliberate trade-offs in this design?]
+        [Name the known weaknesses — not vague "areas for improvement" but specific failure modes or trade-offs that were deliberate. E.g. "The PTO adds a failure mode at the shifter; the single-motor arm trades redundancy for power savings. Both were deliberate calls given the 88 W ceiling."]
       </div>
     </div>
   </div>
 
-  <!-- ===================== 05 BUILD / FABRICATION ===================== -->
+  <!-- ===================== 05 BUILD ===================== -->
   <div class="project-body">
     <span class="mono">05 — Build</span>
     <div>
-      <p>[How was it built? Notable fabrication or implementation details.]</p>
-      <p>[Any mid-build changes or surprises that shaped the final result.]</p>
+      <!-- Name the actual process: tools, materials, cut files, assembly sequence. -->
+      <p>[How was it fabricated or implemented? Name specific materials, tools, and processes — e.g. "I laser-cut the structural plates from POM (Delrin) using nested 12 × 24 in drawing files generated from my CAD."]</p>
+      <!-- If a constraint or surprise forced a change mid-build, say so. -->
+      <p>[Was there a mid-build change driven by a real constraint — access, weight, tolerance? Name what broke the original plan and what the substitute was. This shows adaptive engineering, not just clean execution.]</p>
 
-      <!-- Side-by-side figures — delete if not needed -->
       <div class="cs-fig-grid">
-        <figure class="cs-fig"><img src="../media/[project-name]/build-1.jpg" alt="[description]" onerror="csImgFallback(this)"><figcaption>[Caption.]</figcaption></figure>
-        <figure class="cs-fig"><img src="../media/[project-name]/build-2.jpg" alt="[description]" onerror="csImgFallback(this)"><figcaption>[Caption.]</figcaption></figure>
+        <figure class="cs-fig"><img src="../media/[project-name]/build-1.jpg" alt="[Description]." onerror="csImgFallback(this)"><figcaption>[Caption — what's shown and why this step mattered].</figcaption></figure>
+        <figure class="cs-fig"><img src="../media/[project-name]/build-2.jpg" alt="[Description]." onerror="csImgFallback(this)"><figcaption>[Caption].</figcaption></figure>
       </div>
     </div>
   </div>
@@ -196,27 +225,38 @@ function csImgFallback(img){
   <div class="project-body">
     <span class="mono">06 — Testing</span>
     <div>
-      <p>[How did you validate it? What did you measure?]</p>
+      <!-- How was it validated? Name the test method — tournaments, load tests, timing runs, etc. -->
+      <p>[How did you validate it? Name the test context — e.g. "I validated the robot across four in-season tournaments, with each competition feeding the next iteration."]</p>
 
       <div class="cs-specs">
-        <div class="cs-spec"><div class="k">[Metric]</div><div class="v">[Value]</div></div>
-        <div class="cs-spec"><div class="k">[Metric]</div><div class="v">[Value]</div></div>
-        <div class="cs-spec"><div class="k">[Metric]</div><div class="v">[Value]</div></div>
+        <div class="cs-spec"><div class="k">[Metric]</div><div class="v">[Result]</div></div>
+        <div class="cs-spec"><div class="k">[Metric]</div><div class="v">[Result]</div></div>
+        <div class="cs-spec"><div class="k">[Metric]</div><div class="v">[Result]<small> [context]</small></div></div>
       </div>
 
+      <!-- Any follow-on insight from the data — strategy changes, parameter tuning, etc. -->
+      <p>[What did the data change? Did it confirm your model or contradict it? Did it drive a strategy or parameter change?]</p>
+
+      <!-- The callout is for a single most important finding from testing. -->
       <div class="cs-callout">
         <span class="cs-label">What testing surfaced</span>
-        [What did you learn from testing that changed or confirmed your design?]
+        [The most important thing testing revealed — not a summary of results, but the insight that shaped the next iteration or the honest ceiling you hit. E.g. "The robot capped at 44 points per attempt, a design-driven ceiling that set the target for the next iteration."]
       </div>
+
+      <figure class="cs-fig">
+        <img src="../media/[project-name]/test.jpg" alt="[Description — e.g. the mechanism under load during testing]." onerror="csImgFallback(this)">
+        <figcaption>[Caption].</figcaption>
+      </figure>
     </div>
   </div>
 
-  <!-- ===================== 07 ITERATIONS (revision log) ===================== -->
+  <!-- ===================== 07 ITERATIONS ===================== -->
   <div class="revision-log">
     <div class="revision-log-head">
       <span class="mono">07 — Iterations</span>
       <h2>How it <span class="serif">evolved</span>.</h2>
-      <p style="font-size:1rem; color: var(--ink-soft); font-weight:300; margin-top:0.75rem; max-width: 52ch;">[One sentence on the nature of the iteration — e.g. "Each version was driven by a specific failure or new requirement."]</p>
+      <!-- One sentence on what drove iteration — competition, testing, a new requirement, etc. -->
+      <p style="font-size:1rem; color: var(--ink-soft); font-weight:300; margin-top:0.75rem; max-width: 52ch;">[E.g. "Each iteration was a competition-driven rebuild, not a tuning pass."]</p>
     </div>
 
     <div class="revision-timeline">
@@ -226,19 +266,20 @@ function csImgFallback(img){
         <div class="revision-marker"><div class="revision-dot"></div><div class="revision-line"></div></div>
         <div class="revision-content">
           <div class="revision-header">
-            <span class="revision-version mono">v[X]</span>
+            <span class="revision-version mono">v3</span>
             <span class="revision-status mono" data-status="current">Current</span>
-            <span class="mono revision-date">[YYYY · MM]</span>
+            <span class="mono revision-date">2025 · 03</span>
           </div>
-          <h3 class="revision-title">[Version title]</h3>
-          <p class="revision-desc">[What changed and why.]</p>
+          <h3 class="revision-title">[Short name for this version — e.g. "Final integrated configuration"]</h3>
+          <!-- revision-desc: what changed and why — name the specific gap the previous version exposed. -->
+          <p class="revision-desc">[What this version added or fixed, and the specific gap in the previous version that drove the change. Be concrete: name the mechanism, the metric, or the failure mode.]</p>
           <ul class="revision-changes">
-            <li>[Change]</li>
-            <li>[Change]</li>
-            <li>[Change]</li>
+            <li>[Concrete change — e.g. "Steel rails → rounded aluminum standoffs for weight"]</li>
+            <li>[Concrete change]</li>
+            <li>[Result or award — e.g. "Excellence Award (Stauffer, Feb)"]</li>
           </ul>
           <div class="revision-images">
-            <div class="revision-img-wrap"><img src="../media/[project-name]/iteration-v[X].jpg" alt="[description]" onerror="csImgFallback(this)"><div class="revision-img-caption"><span>[Caption]</span></div></div>
+            <div class="revision-img-wrap"><img src="../media/[project-name]/iteration-v3.jpg" alt="[Description]." onerror="csImgFallback(this)"><div class="revision-img-caption"><span>v3 — [short label]</span></div></div>
           </div>
         </div>
       </div>
@@ -248,18 +289,19 @@ function csImgFallback(img){
         <div class="revision-marker"><div class="revision-dot"></div><div class="revision-line"></div></div>
         <div class="revision-content">
           <div class="revision-header">
-            <span class="revision-version mono">v[X]</span>
+            <span class="revision-version mono">v2</span>
             <span class="revision-status mono" data-status="deprecated">Superseded</span>
-            <span class="mono revision-date">[YYYY · MM]</span>
+            <span class="mono revision-date">2024 · 12 – 2025 · 02</span>
           </div>
-          <h3 class="revision-title">[Version title]</h3>
-          <p class="revision-desc">[What changed and why.]</p>
+          <h3 class="revision-title">[Short name — e.g. "Mid-season rebuild"]</h3>
+          <p class="revision-desc">[What v1 exposed and what this version directly addressed. Name the specific capability gap.]</p>
           <ul class="revision-changes">
-            <li>[Change]</li>
-            <li>[Change]</li>
+            <li>[Concrete change]</li>
+            <li>[Concrete change]</li>
+            <li>[Concrete change]</li>
           </ul>
           <div class="revision-images">
-            <div class="revision-img-wrap"><img src="../media/[project-name]/iteration-v[X-1].jpg" alt="[description]" onerror="csImgFallback(this)"><div class="revision-img-caption"><span>[Caption]</span></div></div>
+            <div class="revision-img-wrap"><img src="../media/[project-name]/iteration-v2.jpg" alt="[Description]." onerror="csImgFallback(this)"><div class="revision-img-caption"><span>v2 — [short label]</span></div></div>
           </div>
         </div>
       </div>
@@ -271,16 +313,18 @@ function csImgFallback(img){
           <div class="revision-header">
             <span class="revision-version mono">v1</span>
             <span class="revision-status mono" data-status="deprecated">Initial</span>
-            <span class="mono revision-date">[YYYY · MM]</span>
+            <span class="mono revision-date">2024 · 07 – 11</span>
           </div>
-          <h3 class="revision-title">[First attempt]</h3>
-          <p class="revision-desc">[Starting point and assumptions.]</p>
+          <h3 class="revision-title">[Short name — e.g. "Initial competition build"]</h3>
+          <!-- For the first version: name what it had, what awards or results it got, and the gap it exposed. -->
+          <p class="revision-desc">[What the first version was, what it could do, and what gap it surfaced — the thing that drove the rebuild.]</p>
           <ul class="revision-changes">
-            <li>[What it had]</li>
-            <li>[What it was missing]</li>
+            <li>[Key capability or configuration]</li>
+            <li>[Result, award, or validation]</li>
+            <li>[The gap it exposed — e.g. "Surfaced the gap: no wall-stake capability"]</li>
           </ul>
           <div class="revision-images">
-            <div class="revision-img-wrap"><img src="../media/[project-name]/iteration-v1.jpg" alt="[description]" onerror="csImgFallback(this)"><div class="revision-img-caption"><span>[Caption]</span></div></div>
+            <div class="revision-img-wrap"><img src="../media/[project-name]/iteration-v1.jpg" alt="[Description]." onerror="csImgFallback(this)"><div class="revision-img-caption"><span>v1 — [short label]</span></div></div>
           </div>
         </div>
       </div>
@@ -293,13 +337,15 @@ function csImgFallback(img){
     <span class="mono">08 — Outcomes</span>
     <div>
       <h2>Results</h2>
+      <!-- Each bullet should be a specific, concrete result — not "improved performance" but "57 combined skills, 10th regionally." -->
       <ul>
-        <li>[Key result]</li>
-        <li>[Key result]</li>
-        <li>[Key result]</li>
+        <li>[Specific measurable result — metric, rank, award, or deliverable]</li>
+        <li>[Specific result]</li>
+        <li>[Specific result — e.g. a reusable technique, architecture, or component that carries forward]</li>
       </ul>
       <h2>What I'd do differently</h2>
-      <p>[Honest retrospective — what would you change if you started over?]</p>
+      <!-- Not a wish list — one honest retrospective about the real bottleneck. -->
+      <p>[One honest sentence about what actually limited the project — not "I'd add more features" but the thing you underestimated or mis-allocated. E.g. "Budget driver-practice and autonomous-programming time as deliberately as motor power."]</p>
     </div>
   </div>
 
