@@ -418,3 +418,52 @@ footer {
 
 .post-featured-actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
 .post-card-footer { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.cs-specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin: 1.75rem 0; }
+.cs-spec { background: var(--bg); padding: 1.1rem 1.2rem; }
+.cs-spec .k { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-mute); }
+.cs-spec .v { font-size: 1.7rem; font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; margin-top: 0.35rem; }
+.cs-spec .v small { font-size: 0.8rem; font-weight: 400; color: var(--ink-mute); letter-spacing: 0; }
+ 
+/* — spec tables (Requirements §3): constraint / chosen / derived — */
+.cs-group { margin: 1.75rem 0; }
+.cs-group-label { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); }
+.cs-group-label::before { content: ""; width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+.cs-group.is-constraint .cs-group-label::before { background: var(--ink-mute); }
+.cs-group.is-chosen .cs-group-label::before { background: var(--accent); }
+.cs-group.is-derived .cs-group-label::before { background: var(--accent-soft); }
+.cs-group-label small { font-family: 'Inter Tight', sans-serif; text-transform: none; letter-spacing: 0; color: var(--ink-mute); font-weight: 300; }
+.cs-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.cs-table th, .cs-table td { text-align: left; padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+.cs-table th { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-mute); font-weight: 500; }
+.cs-table td { color: var(--ink-soft); font-weight: 300; line-height: 1.6; }
+.cs-table tr:last-child td { border-bottom: none; }
+ 
+/* — decision cards (Design §4): Considered / Chose / Because / Trade-off — */
+.cs-decision { border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem 1.25rem; margin: 1rem 0; background: var(--bg-elev); }
+.cs-decision h4 { font-size: 1.02rem; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 0.7rem; }
+.cs-row { display: flex; gap: 0.8rem; margin: 0.4rem 0; font-size: 0.95rem; color: var(--ink-soft); font-weight: 300; line-height: 1.65; }
+.cs-row .cs-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-mute); flex: 0 0 78px; padding-top: 0.2rem; }
+.cs-row.is-chose .cs-tag { color: var(--accent); }
+@media (max-width: 720px) { .cs-row { flex-direction: column; gap: 0.15rem; } .cs-row .cs-tag { flex-basis: auto; } }
+ 
+/* — callouts (Design limitations, Testing insight) — */
+.cs-callout, .cs-limit { padding: 1rem 1.2rem; border-radius: var(--radius); margin: 1.25rem 0; font-size: 0.98rem; font-weight: 300; color: var(--ink-soft); line-height: 1.7; }
+.cs-callout { background: rgba(26, 77, 58, 0.06); border-left: 2px solid var(--accent); }
+.cs-limit { background: var(--bg-elev); border-left: 2px solid var(--ink-mute); }
+.cs-label { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.4rem; }
+.cs-callout .cs-label { color: var(--accent); }
+.cs-limit .cs-label { color: var(--ink-mute); }
+ 
+/* — inline figures (lightbox-wired) — */
+.cs-fig { margin: 1.75rem 0; cursor: zoom-in; }
+.cs-fig img { width: 100%; display: block; border: 1px solid var(--line); border-radius: var(--radius); transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.4s; }
+.cs-fig:hover img { transform: scale(1.01); box-shadow: 0 20px 60px -20px rgba(0,0,0,0.12); }
+.cs-fig figcaption { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-mute); margin-top: 0.7rem; }
+.cs-fig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.75rem 0; }
+.cs-fig-grid .cs-fig { margin: 0; }
+@media (max-width: 720px) { .cs-fig-grid { grid-template-columns: 1fr; } }
+ 
+/* — missing-image placeholder (shows the filename to upload; harmless once images exist) — */
+.cs-drop { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; min-height: 200px; border: 1.5px dashed rgba(26, 77, 58, 0.4); border-radius: var(--radius); background: var(--bg-elev); text-align: center; padding: 1rem; }
+.cs-drop .t { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.cs-drop .d { font-size: 0.82rem; color: var(--ink-mute); word-break: break-word; max-width: 36ch; }
